@@ -68,79 +68,48 @@
 
     <section id="experience" class="section">
       <h2>Experience & Trajectory</h2>
-      <p class="note" style="margin-bottom: 40px;">
-        Intertwining paths of Mathematics, Engineering, and AI Research.
+      <p class="lead" style="margin-bottom: 50px; color: var(--muted);">
+        The intersection of Geometry, Systems Engineering, and Interpretability.
       </p>
     
       <div class="braid-container">
         
-        <!-- СТАТИЧНАЯ КОСА (Топологическая диаграмма) -->
-        <!-- SVG: Сплошные цвета вместо градиентов для надежности -->
-    <svg class="braid-svg" viewBox="0 0 100 1050" preserveAspectRatio="none">
-      
-      <!-- 
-         ЛОГИКА ОТРИСОВКИ:
-         Используем технику "Halo" (Ореол).
-         1. Сначала рисуем все линии чуть темнее (задний план).
-         2. Поверх рисуем сегменты, которые должны быть "сверху".
-         У верхних сегментов есть черная подложка, которая перекрывает нижние линии.
-      -->
-
-      <!-- === СЛОЙ 1: Базовые линии (Все нити целиком) === -->
-      
-      <!-- Math (Cyan) -->
-      <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-            fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.5" />
-      
-      <!-- Dev (Green) -->
-      <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
-            fill="none" stroke="#34d399" stroke-width="5" opacity="0.5" />
-      
-      <!-- AI (Violet) -->
-      <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
-            fill="none" stroke="#a78bfa" stroke-width="5" opacity="0.5" />
-
-
-      <!-- === СЛОЙ 2: Переплетения (Эффект 3D) === -->
-      <!-- Рисуем те же линии, но используем stroke-dasharray, чтобы показать только те части, которые "сверху" -->
-      
-      <!-- CYAN TOP: Рисуем куски синей линии, которые проходят ПОВЕРХ остальных -->
-      <!-- stroke-dasharray: 20px рисуем (перекрестие), 145px пропускаем -->
-      <g>
-        <!-- Черная подложка (ластик) -->
-        <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 137" stroke-dashoffset="-35" />
-        <!-- Цветная линия -->
-        <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-              fill="none" stroke="#7dd3fc" stroke-width="5" stroke-dasharray="30, 137" stroke-dashoffset="-35" />
-      </g>
-
-      <!-- GREEN TOP -->
-      <g>
-        <!-- Ластик -->
-        <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
-              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 137" stroke-dashoffset="-120" />
-        <!-- Линия -->
-        <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
-              fill="none" stroke="#34d399" stroke-width="5" stroke-dasharray="30, 137" stroke-dashoffset="-120" />
-      </g>
-
-      <!-- VIOLET TOP (Central) -->
-      <g>
-        <!-- Ластик -->
-        <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
-              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 130" stroke-dashoffset="-80" />
-        <!-- Линия -->
-        <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
-              fill="none" stroke="#a78bfa" stroke-width="5" stroke-dasharray="30, 130" stroke-dashoffset="-80" />
-      </g>
-
-    </svg>
+        <!-- ВЕРСИЯ 1: Гладкая, красивая коса с градиентами -->
+        <svg class="braid-svg" viewBox="0 0 100 900" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent); stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:var(--accent); stop-opacity:0.2" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#34d399; stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:#34d399; stop-opacity:0.2" />
+            </linearGradient>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent2); stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:var(--accent2); stop-opacity:0.2" />
+            </linearGradient>
+          </defs>
     
-        <!-- КАРТОЧКИ (5 штук, маленькие) -->
+          <!-- Три плавные нити, переплетающиеся вниз -->
+          <!-- Math (Cyan) -->
+          <path d="M30,0 C80,100 20,200 50,300 C80,400 20,500 50,600 C80,700 30,800 30,900" 
+                fill="none" stroke="url(#grad1)" stroke-width="3" />
+          
+          <!-- Dev (Green) -->
+          <path d="M70,0 C20,100 80,200 50,300 C20,400 80,500 50,600 C20,700 70,800 70,900" 
+                fill="none" stroke="url(#grad2)" stroke-width="3" />
+                
+          <!-- AI (Violet) -->
+          <path d="M50,0 C20,100 80,200 50,300 C80,400 20,500 50,600 C80,700 50,800 50,900" 
+                fill="none" stroke="url(#grad3)" stroke-width="3" />
+        </svg>
+    
+    
+        <!-- КАРТОЧКИ (Компактные, как вы просили) -->
         
         <!-- 1. Math PhD -->
-        <div class="exp-mini left" style="top: 2%;">
+        <div class="exp-mini left" style="top: 5%;">
           <div class="card-mini math">
             <div class="mini-year">2018-2022</div>
             <div class="mini-title">PhD in Mathematics</div>
@@ -150,7 +119,7 @@
         </div>
     
         <!-- 2. Backend Intern -->
-        <div class="exp-mini right" style="top: 20%;">
+        <div class="exp-mini right" style="top: 22%;">
           <div class="line-connect"></div>
           <div class="card-mini dev">
             <div class="mini-year">2019-2020</div>
@@ -160,7 +129,7 @@
         </div>
     
         <!-- 3. Senior Engineer -->
-        <div class="exp-mini right" style="top: 38%;">
+        <div class="exp-mini right" style="top: 40%;">
           <div class="line-connect"></div>
           <div class="card-mini dev">
             <div class="mini-year">2020-2023</div>
@@ -170,7 +139,7 @@
         </div>
     
         <!-- 4. Independent Research -->
-        <div class="exp-mini left" style="top: 58%;">
+        <div class="exp-mini left" style="top: 60%;">
           <div class="card-mini ai">
             <div class="mini-year">2023</div>
             <div class="mini-title">AI Safety Fellow</div>

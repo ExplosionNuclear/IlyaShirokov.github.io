@@ -233,30 +233,35 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* --- Braid Container --- */
+/* --- Контейнер Косы --- */
 .braid-container {
   position: relative;
-  /* Высота задана жестко, чтобы соответствовать длине SVG. 
-     Это предотвращает "наезжание" блоков друг на друга. */
-  height: 1050px; 
+  /* Высота фиксирована, чтобы карточки не наезжали друг на друга */
+  height: 900px; 
   width: 100%;
   max-width: 800px;
-  margin: 0 auto 60px; /* Отступ снизу */
+  margin: 0 auto 40px;
 }
 
-/* Сама SVG коса по центру */
 .braid-svg {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px; /* Ширина косы */
+  width: 140px; /* Оптимальная ширина для 3 нитей */
   height: 100%;
   z-index: 0;
-  overflow: visible; /* Важно, чтобы свечение не обрезалось */
+  opacity: 0.9;
 }
 
-/* --- Mini Cards Styles --- */
+/* Эффект свечения при наведении на косу */
+.braid-container:hover .braid-svg path {
+  filter: drop-shadow(0 0 4px currentColor);
+  stroke-width: 4;
+  transition: all 0.3s ease;
+}
+
+/* --- Компактные Карточки --- */
 .exp-mini {
   position: absolute;
   width: 50%;
@@ -265,41 +270,42 @@
   z-index: 2;
 }
 
-/* Левые карточки */
+/* Левая сторона */
 .exp-mini.left {
   left: 0;
-  padding-right: 70px; /* Отступ от центра (косы) */
+  padding-right: 80px; /* Отступ от центра */
   justify-content: flex-end;
   text-align: right;
 }
 
-/* Правые карточки */
+/* Правая сторона */
 .exp-mini.right {
   right: 0;
-  padding-left: 70px;
+  padding-left: 80px;
   justify-content: flex-start;
   text-align: left;
 }
 
-/* Дизайн самой карточки (компактный) */
+/* Дизайн карточки */
 .card-mini {
-  background: rgba(17, 24, 39, 0.9);
+  background: rgba(17, 24, 39, 0.85); /* Темный полупрозрачный фон */
   border: 1px solid var(--line);
-  padding: 10px 14px;
+  padding: 12px 16px;
   border-radius: 12px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
   min-width: 180px;
-  max-width: 240px;
+  max-width: 250px;
   transition: transform 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
 .card-mini:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-3px);
+  background: rgba(17, 24, 39, 1);
+  border-color: rgba(255,255,255,0.2);
 }
 
-/* Цветовые акценты для карточек */
+/* Цветовые полоски сбоку */
 .card-mini.math { border-left: 3px solid var(--accent); } /* Cyan */
 .exp-mini.right .card-mini.math { border-left: none; border-right: 3px solid var(--accent); }
 
@@ -310,46 +316,46 @@
 .exp-mini.right .card-mini.ai { border-left: none; border-right: 3px solid var(--accent2); }
 
 .card-mini.ai-main { 
-  border: 1px solid var(--accent2); 
-  box-shadow: 0 0 15px rgba(167,139,250, 0.15);
+  border: 1px solid var(--accent2);
+  box-shadow: 0 0 15px rgba(167,139,250, 0.1);
 }
 
-/* Типографика внутри карточек */
+/* Текст */
 .mini-year {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
-  margin-bottom: 2px;
-  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
 }
 .mini-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 .mini-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #9ca3af;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
-/* Линия-коннектор от карточки к косе */
+/* Линия от карточки к косе */
 .line-connect {
   width: 40px;
   height: 1px;
   background: var(--line);
-  margin: 0 10px;
-  opacity: 0.5;
+  margin: 0 15px;
+  opacity: 0.4;
 }
 
-/* --- Mobile Fix --- */
-@media (max-width: 640px) {
+/* --- Адаптив для мобильных (в одну колонку) --- */
+@media (max-width: 700px) {
   .braid-svg {
-    left: 20px; /* Сдвигаем косу влево */
-    transform: none;
+    left: 20px; /* Коса становится фоном слева */
     width: 60px;
-    opacity: 0.5;
+    opacity: 0.3;
+    transform: none;
   }
   
   .exp-mini {
@@ -360,40 +366,22 @@
     right: auto !important;
     text-align: left !important;
     justify-content: flex-start !important;
-    padding: 0 0 0 70px; /* Место слева под косу */
+    padding: 0 0 0 60px; /* Отступ слева под косу */
     margin-bottom: 24px;
   }
   
   .card-mini {
-    border-left: 3px solid var(--line); /* Унифицируем бордер на мобиле */
+    border-left: 3px solid var(--line);
     border-right: none !important;
     max-width: 100%;
   }
   
+  /* Цветные бордеры на мобилке всегда слева */
+  .card-mini.math { border-left-color: var(--accent); }
+  .card-mini.dev { border-left-color: #34d399; }
+  .card-mini.ai { border-left-color: var(--accent2); }
+  
   .line-connect { display: none; }
   .braid-container { height: auto; }
-}
-
-.braid-svg {
-  /* Убеждаемся, что SVG виден */
-  display: block;
-  opacity: 1 !important;
-  
-  /* Позиционирование */
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140px; /* Чуть шире, чтобы влезли изгибы */
-  height: 100%;
-  
-  /* Разрешаем линиям выходить за границы контейнера SVG, если нужно */
-  overflow: visible; 
-  z-index: 0;
-}
-
-/* Дополнительно подсветим линии при наведении */
-.braid-svg:hover path {
-  filter: drop-shadow(0 0 5px currentColor);
 }
 
