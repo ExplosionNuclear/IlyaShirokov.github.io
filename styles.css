@@ -236,9 +236,10 @@
 /* --- Контейнер --- */
 .braid-container {
   position: relative;
-  height: 950px; 
+  /* Высота соответствует длине SVG (1050 единиц ~ 1050px) */
+  height: 1050px; 
   width: 100%;
-  max-width: 900px; /* Сделали шире */
+  max-width: 900px;
   margin: 0 auto 50px;
 }
 
@@ -248,7 +249,9 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px; /* Вернули БОЛЬШОЙ размер */
+  /* Ширина 160px оптимальна для координатной сетки 0-100.
+     Это делает косу достаточно широкой и видимой. */
+  width: 160px; 
   height: 100%;
   z-index: 0;
   overflow: visible;
@@ -256,24 +259,26 @@
 
 /* Стиль нитей по умолчанию */
 .strand {
-  stroke-width: 4;
-  opacity: 0.5;
+  stroke-width: 4; /* Толщина линии */
+  opacity: 0.6;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  /* ВАЖНО: Убираем fill, если он вдруг просочился */
+  fill: none; 
 }
 
-/* ГЛАВНОЕ: Индивидуальная подсветка при наведении */
+/* Индивидуальная подсветка при наведении */
 .strand:hover {
   opacity: 1;
-  stroke-width: 7; /* Становится толще */
-  filter: drop-shadow(0 0 8px currentColor); /* Светится своим цветом */
-  z-index: 10; /* Визуально всплывает (хотя в SVG z-index работает иначе, фильтр решает) */
+  stroke-width: 6; /* Линия становится жирнее */
+  filter: drop-shadow(0 0 8px currentColor); /* Неоновое свечение */
+  z-index: 10;
 }
 
 /* --- Карточки --- */
 .exp-mini {
   position: absolute;
-  width: 45%; /* Чуть уже, чтобы дать место широкой косе */
+  width: 42%; /* Карточки не слишком широкие */
   display: flex;
   align-items: center;
   z-index: 2;
@@ -281,14 +286,14 @@
 
 .exp-mini.left {
   left: 0;
-  padding-right: 40px; 
+  padding-right: 30px; 
   justify-content: flex-end;
   text-align: right;
 }
 
 .exp-mini.right {
   right: 0;
-  padding-left: 40px;
+  padding-left: 30px;
   justify-content: flex-start;
   text-align: left;
 }
@@ -296,8 +301,8 @@
 .card-mini {
   background: rgba(11, 15, 23, 0.9);
   border: 1px solid var(--line);
-  padding: 14px 18px;
-  border-radius: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
   backdrop-filter: blur(8px);
   min-width: 200px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -317,56 +322,56 @@
 .card-mini.ai-main { border: 1px solid var(--accent2); box-shadow: 0 0 20px rgba(167,139,250, 0.15); }
 
 /* Тексты */
-.mini-year { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;}
-.mini-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.mini-year { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px;}
+.mini-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
 .mini-desc { font-size: 13px; color: #9ca3af; }
 
-/* --- СТРЕЛОЧКИ / КОННЕКТОРЫ --- */
+/* --- Стрелочки --- */
 .connector-arrow {
   position: relative;
-  width: 50px;      /* Длина стрелки */
-  height: 2px;      /* Толщина линии */
-  margin: 0 15px;   /* Отступ от карточки */
+  width: 40px;      
+  height: 2px;      
+  margin: 0 12px;   
   opacity: 0.7;
 }
 
-/* Точка (узел) на конце стрелки */
+/* Точка на конце стрелки */
 .connector-arrow::after {
   content: '';
   position: absolute;
-  width: 8px; 
-  height: 8px;
+  width: 6px; 
+  height: 6px;
   border-radius: 50%;
-  background: inherit; /* Цвет берется от линии */
+  background: inherit; 
   top: 50%;
   transform: translateY(-50%);
   box-shadow: 0 0 5px inherit;
 }
 
-/* Для левых карточек точка справа (у косы) */
-.exp-mini.left .connector-arrow::after { right: -4px; }
-
-/* Для правых карточек точка слева (у косы) */
-.exp-mini.right .connector-arrow::after { left: -4px; }
+.exp-mini.left .connector-arrow::after { right: -3px; }
+.exp-mini.right .connector-arrow::after { left: -3px; }
 
 
 /* --- Mobile --- */
 @media (max-width: 768px) {
   .braid-svg {
-    left: -40px; /* Сдвигаем влево, чтобы не мешала тексту */
-    width: 120px;
-    transform: none;
+    left: -20px; 
+    width: 100px; /* Узкая коса сбоку */
     opacity: 0.3;
   }
   .exp-mini {
     width: 100%;
     position: relative !important;
-    top: auto !important; left: auto !important; right: auto !important;
-    padding: 0 0 0 50px;
+    top: auto !important;
+    left: auto !important; 
+    right: auto !important;
+    padding: 0 0 0 60px; /* Отступ слева под косу */
     margin-bottom: 24px;
     justify-content: flex-start !important;
     text-align: left !important;
   }
+  
+  /* На мобильном убираем стрелки, они мешают */
   .connector-arrow { display: none; }
   .braid-container { height: auto; }
 }

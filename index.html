@@ -74,52 +74,51 @@
     
       <div class="braid-container">
         
-        <!-- SVG: Широкая, интерактивная коса -->
-        <svg class="braid-svg" viewBox="0 0 200 950" preserveAspectRatio="none">
+        <!-- SVG: Геометрия из "версии с масками", но стиль неоновый и интерактивный -->
+        <svg class="braid-svg" viewBox="0 0 100 1050" preserveAspectRatio="none">
           <defs>
+            <!-- Градиенты -->
             <linearGradient id="grad-cyan" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="rgba(125,211,252,0.1)"/></linearGradient>
             <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="rgba(52,211,153,0.1)"/></linearGradient>
             <linearGradient id="grad-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="rgba(167,139,250,0.1)"/></linearGradient>
           </defs>
     
           <!-- 
-             НИТИ (STRANDS). 
-             У каждой свой класс для индивидуальной подсветки.
-             Координаты расширены под width 200.
+             НИТИ (STRANDS) - ТА САМАЯ ГЕОМЕТРИЯ
+             Используем команды Q и T для создания "тугой" косы.
           -->
           
-          <!-- Math (Cyan) -->
+          <!-- Math (Cyan) - Левая нить -->
           <path class="strand strand-math" 
-                d="M60,0 C160,100 40,200 100,300 C160,400 40,500 100,600 C160,700 60,800 60,950" 
+                d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
                 fill="none" stroke="url(#grad-cyan)" />
           
-          <!-- Dev (Green) -->
+          <!-- Dev (Green) - Правая нить -->
           <path class="strand strand-dev" 
-                d="M140,0 C40,100 160,200 100,300 C40,400 160,500 100,600 C40,700 140,800 140,950" 
+                d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
                 fill="none" stroke="url(#grad-green)" />
                 
-          <!-- AI (Violet) -->
+          <!-- AI (Violet) - Центральная нить -->
           <path class="strand strand-ai" 
-                d="M100,0 C40,100 160,200 100,300 C160,400 40,500 100,600 C160,700 100,800 100,950" 
+                d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
                 fill="none" stroke="url(#grad-violet)" />
         </svg>
     
     
-        <!-- КАРТОЧКИ С КОННЕКТОРАМИ -->
+        <!-- КАРТОЧКИ (Стрелки указывают на узлы) -->
         
         <!-- 1. Math PhD -->
-        <div class="exp-mini left" style="top: 5%;">
+        <div class="exp-mini left" style="top: 2%;">
           <div class="card-mini math">
             <div class="mini-year">2018-2022</div>
             <div class="mini-title">PhD in Mathematics</div>
             <div class="mini-desc">Geometry & Topology</div>
           </div>
-          <!-- Стрелочка-коннектор -->
           <div class="connector-arrow" style="background: var(--accent);"></div>
         </div>
     
         <!-- 2. Backend Intern -->
-        <div class="exp-mini right" style="top: 22%;">
+        <div class="exp-mini right" style="top: 18%;">
           <div class="connector-arrow" style="background: #34d399;"></div>
           <div class="card-mini dev">
             <div class="mini-year">2019-2020</div>
@@ -129,7 +128,7 @@
         </div>
     
         <!-- 3. Senior Engineer -->
-        <div class="exp-mini right" style="top: 40%;">
+        <div class="exp-mini right" style="top: 36%;">
           <div class="connector-arrow" style="background: #34d399;"></div>
           <div class="card-mini dev">
             <div class="mini-year">2020-2023</div>
@@ -139,7 +138,7 @@
         </div>
     
         <!-- 4. Independent Research -->
-        <div class="exp-mini left" style="top: 60%;">
+        <div class="exp-mini left" style="top: 56%;">
           <div class="card-mini ai">
             <div class="mini-year">2023</div>
             <div class="mini-title">AI Safety Fellow</div>
@@ -149,7 +148,7 @@
         </div>
     
         <!-- 5. Current Role -->
-        <div class="exp-mini left" style="top: 80%;">
+        <div class="exp-mini left" style="top: 76%;">
           <div class="card-mini ai-main">
             <div class="mini-year">Present</div>
             <div class="mini-title">Senior AI Researcher</div>
