@@ -447,3 +447,53 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* --- Education Styles --- */
+
+.meta-group {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.resume-content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.highlight-label {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.resume-list {
+  margin: 0;
+  padding-left: 18px; /* Небольшой отступ для буллитов */
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.resume-list li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* Цвет буллитов (точек списка) */
+.resume-list li::marker {
+  color: var(--line);
+}
+
+/* На мобильных выравниваем мету влево, чтобы не скакала */
+@media (max-width: 600px) {
+  .meta-group {
+    text-align: left;
+    align-items: flex-start;
+    margin-top: 4px;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
