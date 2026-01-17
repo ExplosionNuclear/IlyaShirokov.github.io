@@ -236,8 +236,7 @@
 /* --- Контейнер --- */
 .braid-container {
   position: relative;
-  /* Высота соответствует длине SVG (1050 единиц ~ 1050px) */
-  height: 1050px; 
+  height: 1400px; /* Увеличили высоту для 6+ карточек */
   width: 100%;
   max-width: 900px;
   margin: 0 auto 50px;
@@ -249,62 +248,45 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* Ширина 160px оптимальна для координатной сетки 0-100.
-     Это делает косу достаточно широкой и видимой. */
-  width: 160px; 
+  width: 180px; /* Чуть шире для 3 нитей */
   height: 100%;
   z-index: 0;
   overflow: visible;
 }
 
-/* Стиль нитей по умолчанию */
 .strand {
-  stroke-width: 4; /* Толщина линии */
-  opacity: 0.6;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  fill: none; /* Обязательно none */
+  stroke-width: 4;
+  opacity: 0.5;
+  transition: all 0.3s ease;
   cursor: pointer;
-  /* ВАЖНО: Убираем fill, если он вдруг просочился */
-  fill: none; 
 }
 
-/* Индивидуальная подсветка при наведении */
 .strand:hover {
   opacity: 1;
-  stroke-width: 6; /* Линия становится жирнее */
-  filter: drop-shadow(0 0 8px currentColor); /* Неоновое свечение */
+  stroke-width: 6;
+  filter: drop-shadow(0 0 8px currentColor);
   z-index: 10;
 }
 
 /* --- Карточки --- */
 .exp-mini {
   position: absolute;
-  width: 42%; /* Карточки не слишком широкие */
+  width: 42%;
   display: flex;
   align-items: center;
   z-index: 2;
-}
-
-.exp-mini.left {
-  left: 0;
-  padding-right: 30px; 
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.exp-mini.right {
-  right: 0;
-  padding-left: 30px;
-  justify-content: flex-start;
-  text-align: left;
+  pointer-events: none; /* ВАЖНО: чтобы мышка "видела" косу сквозь блок карточки */
 }
 
 .card-mini {
+  pointer-events: auto; /* А сама карточка кликабельна */
   background: rgba(11, 15, 23, 0.9);
   border: 1px solid var(--line);
   padding: 12px 16px;
   border-radius: 12px;
   backdrop-filter: blur(8px);
-  min-width: 200px;
+  min-width: 220px;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
@@ -312,122 +294,111 @@
 .card-mini:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border-color: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.2);
+  z-index: 20;
 }
 
-/* Цветные акценты */
+/* Ссылки внутри карточек */
+.card-mini a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+  transition: color 0.2s;
+}
+.card-mini a:hover {
+  color: var(--accent);
+  border-bottom-style: solid;
+}
+
+/* Расположение */
+.exp-mini.left {
+  left: 0;
+  padding-right: 40px; 
+  justify-content: flex-end;
+  text-align: right;
+}
+.exp-mini.right {
+  right: 0;
+  padding-left: 40px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* Акценты */
 .card-mini.math { border-top: 2px solid var(--accent); }
 .card-mini.dev { border-top: 2px solid #34d399; }
 .card-mini.ai { border-top: 2px solid var(--accent2); }
-.card-mini.ai-main { border: 1px solid var(--accent2); box-shadow: 0 0 20px rgba(167,139,250, 0.15); }
+.card-mini.ai-main { border: 1px solid var(--accent2); box-shadow: 0 0 15px rgba(167,139,250,0.1); }
 
-/* Тексты */
-.mini-year { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px;}
-.mini-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.mini-desc { font-size: 13px; color: #9ca3af; }
+/* Текст */
+.mini-year { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+.mini-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.mini-desc { font-size: 13px; color: #9ca3af; line-height: 1.4; }
 
-/* --- Стрелочки --- */
+/* Стрелки */
 .connector-arrow {
   position: relative;
   width: 40px;      
   height: 2px;      
   margin: 0 12px;   
-  opacity: 0.7;
+  opacity: 0.6;
 }
-
-/* Точка на конце стрелки */
 .connector-arrow::after {
   content: '';
   position: absolute;
-  width: 6px; 
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: inherit; 
   top: 50%;
   transform: translateY(-50%);
   box-shadow: 0 0 5px inherit;
 }
-
 .exp-mini.left .connector-arrow::after { right: -3px; }
 .exp-mini.right .connector-arrow::after { left: -3px; }
 
-
 /* --- Mobile --- */
 @media (max-width: 768px) {
-  .braid-svg {
-    left: -20px; 
-    width: 100px; /* Узкая коса сбоку */
-    opacity: 0.3;
-  }
+  .braid-svg { left: -20px; width: 100px; opacity: 0.3; }
   .exp-mini {
     width: 100%;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important; 
-    right: auto !important;
-    padding: 0 0 0 60px; /* Отступ слева под косу */
+    position: relative !important; top: auto !important; left: auto !important;
+    padding: 0 0 0 60px;
     margin-bottom: 24px;
-    justify-content: flex-start !important;
-    text-align: left !important;
+    justify-content: flex-start !important; text-align: left !important;
   }
-  
-  /* На мобильном убираем стрелки, они мешают */
   .connector-arrow { display: none; }
   .braid-container { height: auto; }
 }
 
+/* --- INTERACTIVITY (Strand <-> Card) --- */
+/* (Ваш код из прошлого шага - работает благодаря pointer-events: none на .exp-mini) */
+
 .braid-container:has(.strand-math:hover) .card-mini.math {
   border-color: var(--accent);
-  box-shadow: 0 0 25px rgba(125,211,252, 0.4); /* Яркое голубое свечение */
-  transform: translateY(-6px) scale(1.03); /* Чуть подпрыгивает */
-  background: rgba(11, 15, 23, 1); /* Фон становится плотнее */
+  box-shadow: 0 0 20px rgba(125,211,252, 0.3);
+  transform: translateY(-4px);
 }
-/* Если навели на карточку Math -> подсвечиваем нить Math */
 .braid-container:has(.card-mini.math:hover) .strand-math {
-  opacity: 1;
-  stroke-width: 6;
-  filter: drop-shadow(0 0 10px var(--accent));
+  opacity: 1; stroke-width: 6; filter: drop-shadow(0 0 8px var(--accent));
 }
 
-
-/* 2. DEV TRACK (Green) */
-/* Навели на нить Dev -> подсвечиваем карточки Dev */
 .braid-container:has(.strand-dev:hover) .card-mini.dev {
   border-color: #34d399;
-  box-shadow: 0 0 25px rgba(52,211,153, 0.4); /* Зеленое свечение */
-  transform: translateY(-6px) scale(1.03);
-  background: rgba(11, 15, 23, 1);
+  box-shadow: 0 0 20px rgba(52,211,153, 0.3);
+  transform: translateY(-4px);
 }
-/* Навели на карточку Dev -> подсвечиваем нить Dev */
 .braid-container:has(.card-mini.dev:hover) .strand-dev {
-  opacity: 1;
-  stroke-width: 6;
-  filter: drop-shadow(0 0 10px #34d399);
+  opacity: 1; stroke-width: 6; filter: drop-shadow(0 0 8px #34d399);
 }
 
-
-/* 3. AI TRACK (Violet) */
-/* Навели на нить AI -> подсвечиваем карточки AI */
-/* Обратите внимание: у вас есть класс .ai и .ai-main, перечисляем оба */
 .braid-container:has(.strand-ai:hover) .card-mini.ai,
 .braid-container:has(.strand-ai:hover) .card-mini.ai-main {
   border-color: var(--accent2);
-  box-shadow: 0 0 25px rgba(167,139,250, 0.4); /* Фиолетовое свечение */
-  transform: translateY(-6px) scale(1.03);
-  background: rgba(11, 15, 23, 1);
+  box-shadow: 0 0 20px rgba(167,139,250, 0.3);
+  transform: translateY(-4px);
 }
-/* Навели на карточку AI -> подсвечиваем нить AI */
 .braid-container:has(.card-mini.ai:hover) .strand-ai,
 .braid-container:has(.card-mini.ai-main:hover) .strand-ai {
-  opacity: 1;
-  stroke-width: 6;
-  filter: drop-shadow(0 0 10px var(--accent2));
-}
-
-/* Доп. эффект: когда одна нить активна, остальные немного тускнеют для фокуса */
-.braid-container:has(.strand:hover) .card-mini:not(:hover) {
-    /* Если мы наводим на нить, этот селектор сработает сложно, 
-       лучше не усложнять, чтобы не моргало. Оставим просто подсветку. */
-    transition: opacity 0.3s;
+  opacity: 1; stroke-width: 6; filter: drop-shadow(0 0 8px var(--accent2));
 }
 
