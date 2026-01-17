@@ -180,10 +180,12 @@
   #saw{
     width: 100%;
     height: auto;
-    border: 1px solid var(--line);
+    display:block;
+    border: none;
     border-radius: 14px;
-    background: rgba(0,0,0,.18);
+    background: transparent;
   }
+  
   
   .controls{
     display:flex;

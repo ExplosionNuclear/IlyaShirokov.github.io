@@ -1,14 +1,17 @@
 const canvas = document.getElementById("saw");
 const ctx = canvas.getContext("2d");
-const restartBtn = document.getElementById("restart");
-const stepsInput = document.getElementById("steps");
-const speedInput = document.getElementById("speed");
 
 function key(x, y) { return `${x},${y}`; }
 
+function randomColor() {
+  // Nice bright-ish HSL color
+  const h = Math.floor(Math.random() * 360);
+  const s = 85;
+  const l = 60;
+  return `hsl(${h} ${s}% ${l}%)`;
+}
+
 function generateSAW(maxSteps) {
-  // Simple kinetic growth: at each step choose uniformly among free neighbors.
-  // If stuck, stop early.
   const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
   let x = 0, y = 0;
   const path = [[0,0]];
@@ -20,7 +23,7 @@ function generateSAW(maxSteps) {
       const nx = x + dx, ny = y + dy;
       if (!used.has(key(nx, ny))) options.push([nx, ny]);
     }
-    if (options.length === 0) break;
+    if (options.length === 0) break; // stuck
     const [nx, ny] = options[(Math.random() * options.length) | 0];
     x = nx; y = ny;
     used.add(key(x,y));
@@ -38,7 +41,7 @@ function fitToCanvas(path) {
   const w = maxX - minX + 1;
   const h = maxY - minY + 1;
 
-  const pad = 20;
+  const pad = 24;
   const scale = Math.max(2, Math.floor(Math.min(
     (canvas.width - 2*pad) / w,
     (canvas.height - 2*pad) / h
@@ -48,23 +51,33 @@ function fitToCanvas(path) {
   return { scale, ox, oy };
 }
 
+function clear() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// Settings
+const MAX_STEPS = 900;          // length of each walk
+const FPS = 60;                // drawing speed
+const PAUSE_MS = 700;          // pause between runs
+const BG_ALPHA = 0.00;         // set to >0 if you want motion trails
+
 let path = [];
 let t = 0;
 let raf = null;
 let fit = null;
+let stroke = randomColor();
 
-function clear() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-}
+function draw(upto) {
+  if (BG_ALPHA > 0) {
+    ctx.fillStyle = `rgba(0,0,0,${BG_ALPHA})`;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+  } else {
+    clear();
+  }
 
-function drawFrame(upto) {
-  clear();
-
-  // grid points
   fit = fit || fitToCanvas(path);
   const { scale, ox, oy } = fit;
 
-  // line
   ctx.lineWidth = Math.max(1, Math.floor(scale / 3));
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
@@ -77,44 +90,35 @@ function drawFrame(upto) {
     if (i === 0) ctx.moveTo(px, py);
     else ctx.lineTo(px, py);
   }
-  ctx.strokeStyle = "rgba(125,211,252,0.95)";
+
+  ctx.strokeStyle = stroke;
   ctx.stroke();
-
-  // head dot
-  if (upto >= 0) {
-    const [hx, hy] = path[Math.min(upto, path.length-1)];
-    const px = ox + hx*scale, py = oy + hy*scale;
-    ctx.beginPath();
-    ctx.arc(px, py, Math.max(2, Math.floor(scale/2.2)), 0, Math.PI*2);
-    ctx.fillStyle = "rgba(167,139,250,0.95)";
-    ctx.fill();
-  }
-
-  // text
-  ctx.font = "12px ui-monospace, Menlo, Consolas, monospace";
-  ctx.fillStyle = "rgba(229,231,235,0.8)";
-  ctx.fillText(`steps drawn: ${Math.min(upto, path.length-1)} / ${path.length-1}`, 12, 18);
 }
 
 function loop() {
-  const speed = parseInt(speedInput.value, 10); // frames per second target-ish
-  const stepPerFrame = Math.max(1, Math.floor(60 / Math.max(1, speed)));
-  t += stepPerFrame;
+  // advance by ~1 step per frame (can tweak)
+  t += 1;
+  draw(t);
 
-  drawFrame(t);
-
-  if (t < path.length-1) raf = requestAnimationFrame(loop);
+  if (t < path.length - 1) {
+    raf = requestAnimationFrame(loop);
+  } else {
+    // finished: restart after a short pause
+    setTimeout(startNewRun, PAUSE_MS);
+  }
 }
 
-function start() {
+function startNewRun() {
   cancelAnimationFrame(raf);
   t = 0;
   fit = null;
-  const maxSteps = parseInt(stepsInput.value, 10);
-  path = generateSAW(maxSteps);
-  drawFrame(0);
+  stroke = randomColor();
+  path = generateSAW(MAX_STEPS);
+
+  // optional: clear once at start so each run is clean
+  clear();
+
   raf = requestAnimationFrame(loop);
 }
 
-restartBtn.addEventListener("click", start);
-start();
+startNewRun();
