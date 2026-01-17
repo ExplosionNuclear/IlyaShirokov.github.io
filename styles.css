@@ -424,3 +424,26 @@
   cursor: pointer;
 }
 
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Отступы между скиллами */
+}
+
+.skill-tag {
+  font-family: var(--mono);
+  font-size: 13px; /* Чуть крупнее для читаемости */
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap; /* Чтобы длинные названия не ломались некрасиво */
+}
+
+/* Легкий ховер эффект */
+.skill-tag:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
