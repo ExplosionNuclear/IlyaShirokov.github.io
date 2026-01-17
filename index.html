@@ -68,120 +68,84 @@
       <h2>Tracks</h2>
     
       <div class="grid tracks-grid">
-    
-        <!-- ========== Topology ========== -->
-        <div class="card track" data-accent="topo">
+        <div class="card track" data-accent="topology">
           <div class="track-head">
             <h3>Topology</h3>
             <span class="meta">research trajectory</span>
           </div>
     
-          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Topology track">
+          <svg class="track-svg" viewBox="0 0 1280 240" role="img" aria-label="Topology track">
             <defs>
-              <!-- Arrowhead A: filled triangle (slim) -->
-              <marker id="arrow-topo" viewBox="0 0 12 12" refX="11" refY="6"
-                      markerWidth="8" markerHeight="8" orient="auto">
-                <path d="M 0 1 L 12 6 L 0 11 z" class="arrow-fill"/>
+              <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.2" refY="5"
+                      markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
               </marker>
             </defs>
     
-            <path class="track-path" marker-end="url(#arrow-topo)"
-                  d="M 90 120 C 240 40, 360 200, 510 120 S 720 40, 890 120" />
+            <!-- main path -->
+            <path class="track-path" marker-end="url(#arrow-topology)"
+                  d="M 80 120
+                     C 190 35, 300 205, 410 120
+                     S 630 35, 740 120
+                     S 960 205, 1070 120
+                     S 1180 35, 1240 120" />
     
-            <!-- dots -->
-            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="360" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="620" cy="120" r="4.2" class="node-dot"/>
+            <!-- nodes: dots -->
+            <circle cx="110" cy="120" r="6.5" class="node-dot"/>
     
-            <!-- labels -->
-            <rect x="62" y="150" rx="12" ry="12" width="116" height="32" class="label-pill"/>
-            <text x="120" y="171" text-anchor="middle" class="label-text">Start</text>
+            <circle cx="330" cy="120" r="6.5" class="node-dot"/>
     
-            <rect x="265" y="30" rx="12" ry="12" width="190" height="32" class="label-pill"/>
-            <text x="360" y="51" text-anchor="middle" class="label-text">Hopf / Borsuk–Ulam</text>
+            <circle cx="520" cy="120" r="6.5" class="node-dot"/>
     
-            <rect x="530" y="155" rx="12" ry="12" width="180" height="32" class="label-pill"/>
-            <text x="620" y="176" text-anchor="middle" class="label-text">LS / Tucker</text>
+            <circle cx="720" cy="120" r="6.5" class="node-dot"/>
     
-            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
-            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
+            <circle cx="920" cy="120" r="6.5" class="node-dot"/>
+    
+            <circle cx="1120" cy="120" r="6.5" class="node-dot"/>
+    
+            <!-- labels (alternating top/bottom for readability) -->
+            <g class="label">
+              <rect x="20" y="155" rx="12" ry="12" width="180" height="34" class="label-pill"/>
+              <text x="110" y="178" text-anchor="middle" class="label-text">Summer REU @ MIPT (2021)</text>
+            </g>
+    
+            <g class="label">
+              <rect x="215" y="35" rx="12" ry="12" width="230" height="34" class="label-pill"/>
+              <text x="330" y="58" text-anchor="middle" class="label-text">Invited to PhD @ PDMI RAS</text>
+            </g>
+    
+            <g class="label">
+              <rect x="405" y="155" rx="12" ry="12" width="230" height="34" class="label-pill"/>
+              <a href="PASTE_LINK_F_NEIGHBORS" target="_blank" rel="noreferrer">
+                <text x="520" y="178" text-anchor="middle" class="label-link">Hopf-type theorems for f-neighbors</text>
+              </a>
+            </g>
+    
+            <g class="label">
+              <rect x="615" y="35" rx="12" ry="12" width="210" height="34" class="label-pill"/>
+              <a href="PASTE_LINK_NEUROGEOMETRY" target="_blank" rel="noreferrer">
+                <text x="720" y="58" text-anchor="middle" class="label-link">Hopf fibration → neurogeometry</text>
+              </a>
+            </g>
+    
+            <g class="label">
+              <rect x="835" y="155" rx="12" ry="12" width="170" height="34" class="label-pill"/>
+              <a href="PASTE_LINK_CONVEX_SURFACES" target="_blank" rel="noreferrer">
+                <text x="920" y="178" text-anchor="middle" class="label-link">Convex surfaces</text>
+              </a>
+            </g>
+    
+            <g class="label final">
+              <rect x="1010" y="35" rx="14" ry="14" width="260" height="52" class="final-pill"/>
+              <text x="1140" y="57" text-anchor="middle" class="final-text">Triangulable manifolds</text>
+              <text x="1140" y="76" text-anchor="middle" class="final-sub">(no Riemannian metric needed)</text>
+            </g>
           </svg>
+    
+          <p class="muted" style="margin-top:10px;">
+            Tip: replace <span style="font-family:var(--mono);">PASTE_LINK_...</span> with your actual paper/post links.
+          </p>
         </div>
-    
-        <!-- ========== AI Safety ========== -->
-        <div class="card track" data-accent="safety">
-          <div class="track-head">
-            <h3>AI Safety</h3>
-            <span class="meta">alignment trajectory</span>
-          </div>
-    
-          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="AI Safety track">
-            <defs>
-              <!-- Arrowhead B: open chevron (different shape) -->
-              <marker id="arrow-safety" viewBox="0 0 14 14" refX="13" refY="7"
-                      markerWidth="10" markerHeight="10" orient="auto">
-                <path d="M 1 2 L 13 7 L 1 12" class="arrow-stroke" />
-              </marker>
-            </defs>
-    
-            <path class="track-path" marker-end="url(#arrow-safety)"
-                  d="M 90 120 C 230 55, 360 55, 470 120 S 700 200, 890 120" />
-    
-            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="470" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="700" cy="150" r="4.2" class="node-dot"/>
-    
-            <rect x="30" y="150" rx="12" ry="12" width="180" height="32" class="label-pill"/>
-            <text x="120" y="171" text-anchor="middle" class="label-text">SAW toy models</text>
-    
-            <rect x="350" y="30" rx="12" ry="12" width="240" height="32" class="label-pill"/>
-            <text x="470" y="51" text-anchor="middle" class="label-text">Hidden reasoning / probing</text>
-    
-            <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
-            <text x="700" y="196" text-anchor="middle" class="label-text">Info flow + attention</text>
-    
-            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
-            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
-          </svg>
-        </div>
-    
-        <!-- ========== Professional ========== -->
-        <div class="card track" data-accent="pro">
-          <div class="track-head">
-            <h3>Professional</h3>
-            <span class="meta">industry trajectory</span>
-          </div>
-    
-          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Professional track">
-            <defs>
-              <!-- Arrowhead C: diamond (filled) -->
-              <marker id="arrow-pro" viewBox="0 0 14 14" refX="13" refY="7"
-                      markerWidth="9" markerHeight="9" orient="auto">
-                <path d="M 7 1 L 13 7 L 7 13 L 1 7 z" class="arrow-fill"/>
-              </marker>
-            </defs>
-    
-            <path class="track-path" marker-end="url(#arrow-pro)"
-                  d="M 90 120 C 250 200, 360 40, 520 120 S 700 200, 890 120" />
-    
-            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="520" cy="120" r="4.2" class="node-dot"/>
-            <circle cx="700" cy="150" r="4.2" class="node-dot"/>
-    
-            <rect x="40" y="150" rx="12" ry="12" width="160" height="32" class="label-pill"/>
-            <text x="120" y="171" text-anchor="middle" class="label-text">CV / graphics</text>
-    
-            <rect x="395" y="30" rx="12" ry="12" width="250" height="32" class="label-pill"/>
-            <text x="520" y="51" text-anchor="middle" class="label-text">Vectorization / geometry</text>
-    
-            <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
-            <text x="700" y="196" text-anchor="middle" class="label-text">LLMs for matching</text>
-    
-            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
-            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
-          </svg>
-        </div>
-    
       </div>
     </section>
     
