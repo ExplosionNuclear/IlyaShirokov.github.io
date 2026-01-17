@@ -236,7 +236,7 @@
 /* --- Контейнер --- */
 .braid-container {
   position: relative;
-  height: 1650px; /* Увеличили высоту для 6+ карточек */
+  height: 1600px; /* Увеличили высоту для 6+ карточек */
   width: 100%;
   max-width: 900px;
   margin: 0 auto 50px;
