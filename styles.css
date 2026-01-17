@@ -37,6 +37,18 @@
   a{ color: var(--accent); text-decoration: none; }
   a:hover{ text-decoration: underline; }
   
+  .hero {
+    position: relative;
+    z-index: 50; /* Высокий приоритет */
+  }
+  
+  /* Убеждаемся, что ссылки кликабельны */
+  .hero .links a {
+    position: relative;
+    z-index: 51;
+    cursor: pointer;
+  }
+  
   .container{
     max-width: var(--max);
     margin: 0 auto;
@@ -97,18 +109,7 @@
     padding: 18px;
   }
   
-  .hero{ margin-top: 16px; }
-  .lead{
-    font-size: 16px;
-    margin: 0 0 12px;
-  }
-  
-  .links{
-    display:flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
+
   .pill{
     display:inline-flex;
     align-items:center;
