@@ -64,74 +64,77 @@
       </div>
     </section>
 
-    <svg class="track-svg" viewBox="0 0 1280 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Topology track">
-      <defs>
-        <marker id="arrow-topology-under" viewBox="0 0 10 10" refX="9.2" refY="5"
-                markerWidth="8" markerHeight="8" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill-under" />
-        </marker>
-    
-        <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.2" refY="5"
-                markerWidth="8" markerHeight="8" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
-        </marker>
-      </defs>
-    
-      <!-- curve (underlay + color) -->
-      <path class="track-path-under" marker-end="url(#arrow-topology-under)"
-            d="M 80 130
-               C 190 35, 300 225, 410 130
-               S 630 35, 740 130
-               S 960 225, 1070 130
-               S 1180 35, 1240 130" />
-    
-      <path class="track-path" marker-end="url(#arrow-topology)"
-            d="M 80 130
-               C 190 35, 300 225, 410 130
-               S 630 35, 740 130
-               S 960 225, 1070 130
-               S 1180 35, 1240 130" />
-    
-      <!-- nodes -->
-      <circle cx="110" cy="130" r="5.5" class="node-dot"/>
-      <circle cx="330" cy="130" r="5.5" class="node-dot"/>
-      <circle cx="520" cy="130" r="5.5" class="node-dot"/>
-      <circle cx="720" cy="130" r="5.5" class="node-dot"/>
-      <circle cx="920" cy="130" r="5.5" class="node-dot"/>
-      <circle cx="1120" cy="130" r="5.5" class="node-dot"/>
-    
-      <!-- label 1 -->
-      <rect x="20" y="175" rx="12" ry="12" width="260" height="38" class="label-pill"/>
-      <text x="150" y="200" text-anchor="middle" class="label-text">Solved a problem @ Summer REU (MIPT, 2021)</text>
-    
-      <!-- label 2 -->
-      <rect x="190" y="38" rx="12" ry="12" width="300" height="38" class="label-pill"/>
-      <text x="340" y="63" text-anchor="middle" class="label-text">Invited to PhD (Geometry &amp; Topology, PDMI RAS)</text>
-    
-      <!-- label 3 (link optional) -->
-      <rect x="390" y="175" rx="12" ry="12" width="300" height="38" class="label-pill"/>
-      <a href="#" target="_blank" rel="noreferrer">
-        <text x="540" y="200" text-anchor="middle" class="label-text">Paper: Hopf-type theorems for f-neighbors</text>
-      </a>
-    
-      <!-- label 4 (link optional) -->
-      <rect x="610" y="38" rx="12" ry="12" width="280" height="38" class="label-pill"/>
-      <a href="#" target="_blank" rel="noreferrer">
-        <text x="750" y="63" text-anchor="middle" class="label-text">Hopf fibration → neurogeometry (LNCS)</text>
-      </a>
-    
-      <!-- label 5 (link optional) -->
-      <rect x="820" y="175" rx="12" ry="12" width="240" height="38" class="label-pill"/>
-      <a href="#" target="_blank" rel="noreferrer">
-        <text x="940" y="200" text-anchor="middle" class="label-text">Hopf-type (convex surfaces)</text>
-      </a>
-    
-      <!-- final -->
-      <rect x="980" y="38" rx="14" ry="14" width="290" height="62" class="final-pill"/>
-      <text x="1125" y="67" text-anchor="middle" class="final-text">Hopf-type for triangulable manifolds</text>
-      <text x="1125" y="88" text-anchor="middle" class="final-sub">(no Riemannian metric needed!)</text>
-    </svg>
-    
+    <!-- ===== TOPOLOGY TRACK (paste this whole block inside your <section id="tracks"> ... ) ===== -->
+<div class="card track" data-accent="topology">
+  <div class="track-head">
+    <h3>Topology</h3>
+    <span class="meta">research trajectory</span>
+  </div>
+
+  <svg class="track-svg" viewBox="0 0 1280 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Topology track">
+    <defs>
+      <marker id="arrow-topology-under" viewBox="0 0 10 10" refX="9.2" refY="5"
+              markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill-under" />
+      </marker>
+
+      <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.2" refY="5"
+              markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+      </marker>
+    </defs>
+
+    <!-- curve (underlay + color) -->
+    <path class="track-path-under" marker-end="url(#arrow-topology-under)"
+          d="M 80 130
+             C 190 35, 300 225, 410 130
+             S 630 35, 740 130
+             S 960 225, 1070 130
+             S 1180 35, 1240 130" />
+
+    <path class="track-path" marker-end="url(#arrow-topology)"
+          d="M 80 130
+             C 190 35, 300 225, 410 130
+             S 630 35, 740 130
+             S 960 225, 1070 130
+             S 1180 35, 1240 130" />
+
+    <!-- nodes -->
+    <circle cx="110" cy="130" r="5.5" class="node-dot"/>
+    <circle cx="330" cy="130" r="5.5" class="node-dot"/>
+    <circle cx="520" cy="130" r="5.5" class="node-dot"/>
+    <circle cx="720" cy="130" r="5.5" class="node-dot"/>
+    <circle cx="920" cy="130" r="5.5" class="node-dot"/>
+    <circle cx="1120" cy="130" r="5.5" class="node-dot"/>
+
+    <!-- labels (edit href="#" to your real links; text will still show) -->
+    <rect x="20" y="175" rx="12" ry="12" width="300" height="38" class="label-pill"/>
+    <text x="170" y="200" text-anchor="middle" class="label-text">Summer REU @ MIPT (2021)</text>
+
+    <rect x="210" y="38" rx="12" ry="12" width="300" height="38" class="label-pill"/>
+    <text x="360" y="63" text-anchor="middle" class="label-text">Invited to PhD @ PDMI RAS</text>
+
+    <rect x="390" y="175" rx="12" ry="12" width="350" height="38" class="label-pill"/>
+    <a href="#" target="_blank" rel="noreferrer">
+      <text x="565" y="200" text-anchor="middle" class="label-text">Hopf-type theorems for f-neighbors</text>
+    </a>
+
+    <rect x="630" y="38" rx="12" ry="12" width="330" height="38" class="label-pill"/>
+    <a href="#" target="_blank" rel="noreferrer">
+      <text x="795" y="63" text-anchor="middle" class="label-text">Hopf fibration → neurogeometry</text>
+    </a>
+
+    <rect x="820" y="175" rx="12" ry="12" width="300" height="38" class="label-pill"/>
+    <a href="#" target="_blank" rel="noreferrer">
+      <text x="970" y="200" text-anchor="middle" class="label-text">Hopf-type theorems for convex surfaces</text>
+    </a>
+
+    <rect x="980" y="38" rx="14" ry="14" width="290" height="62" class="final-pill"/>
+    <text x="1125" y="67" text-anchor="middle" class="final-text">Triangulable manifolds</text>
+    <text x="1125" y="88" text-anchor="middle" class="final-sub">(no Riemannian metric needed!)</text>
+  </svg>
+</div>
+
 
     <section id="experience" class="section" data-accent="cyan">
       <h2>Experience</h2>
