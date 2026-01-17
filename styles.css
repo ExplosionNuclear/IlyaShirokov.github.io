@@ -402,3 +402,25 @@
   opacity: 1; stroke-width: 6; filter: drop-shadow(0 0 8px var(--accent2));
 }
 
+/* 1. Контейнер пропускает клики (чтобы работала коса под ним) */
+.exp-mini {
+  pointer-events: none; 
+  /* Ваши остальные стили: absolute, width, z-index: 2 и т.д. */
+}
+
+/* 2. А сама карточка должна ЛОВИТЬ клики */
+.card-mini {
+  pointer-events: auto; /* <--- ЭТО САМОЕ ВАЖНОЕ */
+  
+  /* Ваши остальные стили */
+  position: relative;
+  z-index: 10; /* Поднимаем повыше */
+}
+
+/* 3. Для надежности дадим самой ссылке приоритет */
+.card-mini a {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+}
+
