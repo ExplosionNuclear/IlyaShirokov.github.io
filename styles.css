@@ -48,7 +48,7 @@
     z-index: 51;
     cursor: pointer;
   }
-  
+
   .container{
     max-width: var(--max);
     margin: 0 auto;
@@ -507,3 +507,45 @@
   }
 }
 
+/* --- Profile Header with Avatar --- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Отступ между фото и текстом */
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%; /* Круг */
+  object-fit: cover; /* Чтобы фото не сплющилось */
+  
+  /* Неоновая обводка (градиент Cyan -> Violet) */
+  border: 3px solid transparent;
+  background-image: linear-gradient(var(--card), var(--card)), 
+                    linear-gradient(135deg, var(--accent), var(--accent2));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  
+  /* Тень для свечения */
+  box-shadow: 0 0 25px rgba(125, 211, 252, 0.2);
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(167, 139, 250, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Адаптив для мобильных: фото сверху */
+@media (max-width: 600px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
