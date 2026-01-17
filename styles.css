@@ -233,7 +233,8 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* Tracks layout */
+/* ===== Tracks (override) ===== */
+
 .tracks-grid{
   grid-template-columns: 1fr;
   gap: 14px;
@@ -247,65 +248,64 @@
   margin-bottom: 10px;
 }
 
+/* canvas area for each track */
 .track-svg{
   width: 100%;
   height: auto;
   display:block;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.18);
 }
 
-/* Accent per card (uses your earlier data-accent idea; safe even if you didn't add it elsewhere) */
-.track[data-accent="cyan"]  { --trk: rgba(125,211,252,.95); --trk2: rgba(125,211,252,.25); }
-.track[data-accent="violet"]{ --trk: rgba(167,139,250,.95); --trk2: rgba(167,139,250,.25); }
-.track[data-accent="green"] { --trk: rgba(110,231,183,.95); --trk2: rgba(110,231,183,.25); }
+/* colors per track */
+.track[data-accent="cyan"]  { --trk: #7dd3fc; --trkGlow: rgba(125,211,252,.35); }
+.track[data-accent="violet"]{ --trk: #a78bfa; --trkGlow: rgba(167,139,250,.35); }
+.track[data-accent="green"] { --trk: #6ee7b7; --trkGlow: rgba(110,231,183,.35); }
 
+/* main path */
 .track .track-path{
   fill: none;
-  stroke: var(--trk, rgba(255,255,255,.9));
-  stroke-width: 6;
+  stroke: var(--trk);
+  stroke-width: 7;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
-  opacity: .95;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))
+          drop-shadow(0 0 16px var(--trkGlow));
 }
 
+/* marker arrowhead */
 .track .arrow-fill{
-  fill: var(--trk, rgba(255,255,255,.9));
+  fill: var(--trk);
 }
 
+/* node dots */
 .track .node-dot{
-  fill: rgba(0,0,0,.25);
-  stroke: var(--trk, rgba(255,255,255,.9));
-  stroke-width: 3;
+  fill: rgba(0,0,0,.40);
+  stroke: var(--trk);
+  stroke-width: 3.5;
 }
 
-.track .node-text{
-  font: 12px var(--mono);
-  fill: rgba(229,231,235,.85);
+/* label pills */
+.track .label-pill{
+  fill: rgba(0,0,0,.62);
+  stroke: rgba(255,255,255,.14);
+  stroke-width: 1;
 }
 
+.track .label-text{
+  font: 13px var(--mono);
+  fill: rgba(255,255,255,.92);
+}
+
+/* final pill */
 .track .final-pill{
-  fill: rgba(0,0,0,.25);
-  stroke: var(--trk, rgba(255,255,255,.9));
-  stroke-width: 2.5;
+  fill: rgba(0,0,0,.78);
+  stroke: var(--trk);
+  stroke-width: 2;
 }
 
 .track .final-text{
   font: 13px var(--mono);
-  fill: rgba(229,231,235,.92);
+  fill: rgba(255,255,255,.95);
 }
-
-/* Optional: subtle animation (can be removed) */
-@media (prefers-reduced-motion: no-preference){
-  .track .track-path{
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: draw 1.4s ease-out forwards;
-  }
-  @keyframes draw{
-    to { stroke-dashoffset: 0; }
-  }
-}
-

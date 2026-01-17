@@ -68,135 +68,115 @@
       <h2>Tracks</h2>
     
       <div class="grid tracks-grid">
-        <!-- Track 1: Topology -->
+    
+        <!-- ========== Topology ========== -->
         <div class="card track" data-accent="violet">
           <div class="track-head">
             <h3>Topology</h3>
             <span class="meta">research trajectory</span>
           </div>
     
-          <svg class="track-svg" viewBox="0 0 900 240" role="img" aria-label="Topology track">
+          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Topology track">
             <defs>
-              <marker id="arrow-violet" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.4" refY="5"
+                      markerWidth="10" markerHeight="10" orient="auto">
                 <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
               </marker>
             </defs>
     
-            <!-- path -->
-            <path class="track-path" marker-end="url(#arrow-violet)"
-              d="M 90 170
-                 C 190 70, 290 70, 390 140
-                 S 590 210, 690 125
-                 S 820 70, 840 110" />
+            <path class="track-path" marker-end="url(#arrow-topology)"
+                  d="M 90 120 C 240 40, 360 200, 510 120 S 720 40, 890 120" />
     
-            <!-- nodes -->
-            <g class="node">
-              <circle cx="90" cy="170" r="13" class="node-dot"/>
-              <text x="90" y="205" text-anchor="middle" class="node-text">Start</text>
-            </g>
+            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <rect x="62" y="150" rx="12" ry="12" width="116" height="32" class="label-pill"/>
+            <text x="120" y="171" text-anchor="middle" class="label-text">Start</text>
     
-            <g class="node">
-              <circle cx="390" cy="140" r="13" class="node-dot"/>
-              <text x="390" y="60" text-anchor="middle" class="node-text">Hopf / Borsuk–Ulam</text>
-            </g>
+            <circle cx="360" cy="120" r="14" class="node-dot"/>
+            <rect x="265" y="30" rx="12" ry="12" width="190" height="32" class="label-pill"/>
+            <text x="360" y="51" text-anchor="middle" class="label-text">Hopf / Borsuk–Ulam</text>
     
-            <g class="node">
-              <circle cx="690" cy="125" r="13" class="node-dot"/>
-              <text x="690" y="195" text-anchor="middle" class="node-text">LS / Tucker corollaries</text>
-            </g>
+            <circle cx="620" cy="120" r="14" class="node-dot"/>
+            <rect x="530" y="155" rx="12" ry="12" width="180" height="32" class="label-pill"/>
+            <text x="620" y="176" text-anchor="middle" class="label-text">LS / Tucker</text>
     
-            <g class="node final">
-              <rect x="790" y="78" rx="14" ry="14" width="160" height="52" class="final-pill"/>
-              <text x="870" y="110" text-anchor="middle" class="final-text">your offer here!</text>
-            </g>
+            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
+            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
           </svg>
         </div>
     
-        <!-- Track 2: AI Safety -->
+        <!-- ========== AI Safety ========== -->
         <div class="card track" data-accent="cyan">
           <div class="track-head">
             <h3>AI Safety</h3>
             <span class="meta">alignment trajectory</span>
           </div>
     
-          <svg class="track-svg" viewBox="0 0 900 240" role="img" aria-label="AI Safety track">
+          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="AI Safety track">
             <defs>
-              <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <marker id="arrow-aisafety" viewBox="0 0 10 10" refX="9.4" refY="5"
+                      markerWidth="10" markerHeight="10" orient="auto">
                 <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
               </marker>
             </defs>
     
-            <path class="track-path" marker-end="url(#arrow-cyan)"
-              d="M 90 130
-                 C 190 55, 320 55, 380 120
-                 S 520 200, 610 150
-                 S 740 70, 840 110" />
+            <path class="track-path" marker-end="url(#arrow-aisafety)"
+                  d="M 90 120 C 230 55, 360 55, 470 120 S 700 200, 890 120" />
     
-            <g class="node">
-              <circle cx="90" cy="130" r="13" class="node-dot"/>
-              <text x="90" y="165" text-anchor="middle" class="node-text">SAW toy models</text>
-            </g>
+            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <rect x="30" y="150" rx="12" ry="12" width="180" height="32" class="label-pill"/>
+            <text x="120" y="171" text-anchor="middle" class="label-text">SAW toy models</text>
     
-            <g class="node">
-              <circle cx="380" cy="120" r="13" class="node-dot"/>
-              <text x="380" y="60" text-anchor="middle" class="node-text">Hidden reasoning / probing</text>
-            </g>
+            <circle cx="470" cy="120" r="14" class="node-dot"/>
+            <rect x="350" y="30" rx="12" ry="12" width="240" height="32" class="label-pill"/>
+            <text x="470" y="51" text-anchor="middle" class="label-text">Hidden reasoning / probing</text>
     
-            <g class="node">
-              <circle cx="610" cy="150" r="13" class="node-dot"/>
-              <text x="610" y="210" text-anchor="middle" class="node-text">Info flow + attention</text>
-            </g>
+            <circle cx="700" cy="150" r="14" class="node-dot"/>
+            <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
+            <text x="700" y="196" text-anchor="middle" class="label-text">Info flow + attention</text>
     
-            <g class="node final">
-              <rect x="790" y="78" rx="14" ry="14" width="160" height="52" class="final-pill"/>
-              <text x="870" y="110" text-anchor="middle" class="final-text">your offer here!</text>
-            </g>
+            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
+            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
           </svg>
         </div>
     
-        <!-- Track 3: Professional -->
+        <!-- ========== Professional ========== -->
         <div class="card track" data-accent="green">
           <div class="track-head">
             <h3>Professional</h3>
             <span class="meta">industry trajectory</span>
           </div>
     
-          <svg class="track-svg" viewBox="0 0 900 240" role="img" aria-label="Professional track">
+          <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Professional track">
             <defs>
-              <marker id="arrow-green" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <marker id="arrow-pro" viewBox="0 0 10 10" refX="9.4" refY="5"
+                      markerWidth="10" markerHeight="10" orient="auto">
                 <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
               </marker>
             </defs>
     
-            <path class="track-path" marker-end="url(#arrow-green)"
-              d="M 90 170
-                 C 210 210, 290 70, 410 120
-                 S 560 190, 650 120
-                 S 760 55, 840 110" />
+            <path class="track-path" marker-end="url(#arrow-pro)"
+                  d="M 90 120 C 250 200, 360 40, 520 120 S 700 200, 890 120" />
     
-            <g class="node">
-              <circle cx="90" cy="170" r="13" class="node-dot"/>
-              <text x="90" y="205" text-anchor="middle" class="node-text">CV / graphics</text>
-            </g>
+            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <rect x="40" y="150" rx="12" ry="12" width="160" height="32" class="label-pill"/>
+            <text x="120" y="171" text-anchor="middle" class="label-text">CV / graphics</text>
     
-            <g class="node">
-              <circle cx="410" cy="120" r="13" class="node-dot"/>
-              <text x="410" y="60" text-anchor="middle" class="node-text">Vectorization / geometry</text>
-            </g>
+            <circle cx="520" cy="120" r="14" class="node-dot"/>
+            <rect x="395" y="30" rx="12" ry="12" width="250" height="32" class="label-pill"/>
+            <text x="520" y="51" text-anchor="middle" class="label-text">Vectorization / geometry</text>
     
-            <g class="node">
-              <circle cx="650" cy="120" r="13" class="node-dot"/>
-              <text x="650" y="210" text-anchor="middle" class="node-text">LLMs for matching</text>
-            </g>
+            <circle cx="700" cy="150" r="14" class="node-dot"/>
+            <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
+            <text x="700" y="196" text-anchor="middle" class="label-text">LLMs for matching</text>
     
-            <g class="node final">
-              <rect x="790" y="78" rx="14" ry="14" width="160" height="52" class="final-pill"/>
-              <text x="870" y="110" text-anchor="middle" class="final-text">your offer here!</text>
-            </g>
+            <rect x="790" y="94" rx="14" ry="14" width="170" height="52" class="final-pill"/>
+            <text x="875" y="126" text-anchor="middle" class="final-text">your offer here!</text>
           </svg>
         </div>
+    
       </div>
     </section>
+    
 
     <section id="experience" class="section" data-accent="cyan">
       <h2>Experience</h2>
