@@ -374,3 +374,26 @@
   .braid-container { height: auto; }
 }
 
+.braid-svg {
+  /* Убеждаемся, что SVG виден */
+  display: block;
+  opacity: 1 !important;
+  
+  /* Позиционирование */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px; /* Чуть шире, чтобы влезли изгибы */
+  height: 100%;
+  
+  /* Разрешаем линиям выходить за границы контейнера SVG, если нужно */
+  overflow: visible; 
+  z-index: 0;
+}
+
+/* Дополнительно подсветим линии при наведении */
+.braid-svg:hover path {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+

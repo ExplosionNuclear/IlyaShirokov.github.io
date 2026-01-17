@@ -75,73 +75,67 @@
       <div class="braid-container">
         
         <!-- СТАТИЧНАЯ КОСА (Топологическая диаграмма) -->
-        <svg class="braid-svg" viewBox="0 0 100 1050" preserveAspectRatio="none">
-          <defs>
-            <!-- Градиенты для красоты -->
-            <linearGradient id="grad-math" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
-            <linearGradient id="grad-dev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
-            <linearGradient id="grad-ai" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
-            
-            <!-- Фильтр для свечения -->
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-    
-          <!-- 
-             ГРУППА КОСЫ. 
-             Мы рисуем линии дважды. 
-             Нижний слой — сплошной.
-             Верхний слой — "разрезает" нижний, создавая эффект переплетения (Halo effect).
-             Stroke: #0b0f17 (цвет фона) используется как ластик.
-          -->
-          
-          <!-- LAYER 1: Base Lines (Bottom) -->
-          <!-- Math (Cyan) -->
-          <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-                fill="none" stroke="url(#grad-math)" stroke-width="4" opacity="0.4" />
-          <!-- Dev (Green) -->
-          <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
-                fill="none" stroke="url(#grad-dev)" stroke-width="4" opacity="0.4" />
-          <!-- AI (Violet) -->
-          <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
-                fill="none" stroke="url(#grad-ai)" stroke-width="4" opacity="0.4" />
-    
-    
-          <!-- LAYER 2: Crossing Over (Creates the 3D Weave) -->
-          <!-- Рисуем сегменты поверх, с толстой темной обводкой, чтобы перекрыть нижние линии -->
-          
-          <!-- Cyan Over -->
-          <g>
-             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-                   fill="none" stroke="#0b0f17" stroke-width="12" /> <!-- Eraser -->
-             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-                   fill="none" stroke="url(#grad-math)" stroke-width="4" filter="url(#glow)" />
-             <!-- Маска: dasharray делает линию прерывистой, имитируя ныряние "под" -->
-             <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="1s" fill="freeze" /> 
-             <!-- Для простоты используем stroke-dasharray вручную подобранный под паттерн -->
-             <!-- Паттерн: Виден 30, Пропуск 20 (примерно) -->
-             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
-                   fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="20, 145" stroke-dashoffset="-30" />
-          </g>
-    
-          <!-- Dev Over -->
-          <g>
-              <!-- Делаем "дырки" в зеленой линии там, где она идет ПОД синей -->
-             <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
-                   fill="none" stroke="url(#grad-dev)" stroke-width="4" filter="url(#glow)" 
-                   stroke-dasharray="60, 100" stroke-dashoffset="0"/>
-          </g>
-          
-          <!-- AI Over (Central strand weaving) -->
-          <g>
-             <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
-                   fill="none" stroke="url(#grad-ai)" stroke-width="4" filter="url(#glow)"
-                   stroke-dasharray="40, 120" stroke-dashoffset="-20"/>
-          </g>
-    
-        </svg>
+        <!-- SVG: Сплошные цвета вместо градиентов для надежности -->
+    <svg class="braid-svg" viewBox="0 0 100 1050" preserveAspectRatio="none">
+      
+      <!-- 
+         ЛОГИКА ОТРИСОВКИ:
+         Используем технику "Halo" (Ореол).
+         1. Сначала рисуем все линии чуть темнее (задний план).
+         2. Поверх рисуем сегменты, которые должны быть "сверху".
+         У верхних сегментов есть черная подложка, которая перекрывает нижние линии.
+      -->
+
+      <!-- === СЛОЙ 1: Базовые линии (Все нити целиком) === -->
+      
+      <!-- Math (Cyan) -->
+      <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+            fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.5" />
+      
+      <!-- Dev (Green) -->
+      <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
+            fill="none" stroke="#34d399" stroke-width="5" opacity="0.5" />
+      
+      <!-- AI (Violet) -->
+      <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
+            fill="none" stroke="#a78bfa" stroke-width="5" opacity="0.5" />
+
+
+      <!-- === СЛОЙ 2: Переплетения (Эффект 3D) === -->
+      <!-- Рисуем те же линии, но используем stroke-dasharray, чтобы показать только те части, которые "сверху" -->
+      
+      <!-- CYAN TOP: Рисуем куски синей линии, которые проходят ПОВЕРХ остальных -->
+      <!-- stroke-dasharray: 20px рисуем (перекрестие), 145px пропускаем -->
+      <g>
+        <!-- Черная подложка (ластик) -->
+        <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 137" stroke-dashoffset="-35" />
+        <!-- Цветная линия -->
+        <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+              fill="none" stroke="#7dd3fc" stroke-width="5" stroke-dasharray="30, 137" stroke-dashoffset="-35" />
+      </g>
+
+      <!-- GREEN TOP -->
+      <g>
+        <!-- Ластик -->
+        <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
+              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 137" stroke-dashoffset="-120" />
+        <!-- Линия -->
+        <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
+              fill="none" stroke="#34d399" stroke-width="5" stroke-dasharray="30, 137" stroke-dashoffset="-120" />
+      </g>
+
+      <!-- VIOLET TOP (Central) -->
+      <g>
+        <!-- Ластик -->
+        <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
+              fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="30, 130" stroke-dashoffset="-80" />
+        <!-- Линия -->
+        <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
+              fill="none" stroke="#a78bfa" stroke-width="5" stroke-dasharray="30, 130" stroke-dashoffset="-80" />
+      </g>
+
+    </svg>
     
         <!-- КАРТОЧКИ (5 штук, маленькие) -->
         
