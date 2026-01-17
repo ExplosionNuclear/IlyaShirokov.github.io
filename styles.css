@@ -376,3 +376,58 @@
   .braid-container { height: auto; }
 }
 
+.braid-container:has(.strand-math:hover) .card-mini.math {
+  border-color: var(--accent);
+  box-shadow: 0 0 25px rgba(125,211,252, 0.4); /* Яркое голубое свечение */
+  transform: translateY(-6px) scale(1.03); /* Чуть подпрыгивает */
+  background: rgba(11, 15, 23, 1); /* Фон становится плотнее */
+}
+/* Если навели на карточку Math -> подсвечиваем нить Math */
+.braid-container:has(.card-mini.math:hover) .strand-math {
+  opacity: 1;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+
+/* 2. DEV TRACK (Green) */
+/* Навели на нить Dev -> подсвечиваем карточки Dev */
+.braid-container:has(.strand-dev:hover) .card-mini.dev {
+  border-color: #34d399;
+  box-shadow: 0 0 25px rgba(52,211,153, 0.4); /* Зеленое свечение */
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(11, 15, 23, 1);
+}
+/* Навели на карточку Dev -> подсвечиваем нить Dev */
+.braid-container:has(.card-mini.dev:hover) .strand-dev {
+  opacity: 1;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 10px #34d399);
+}
+
+
+/* 3. AI TRACK (Violet) */
+/* Навели на нить AI -> подсвечиваем карточки AI */
+/* Обратите внимание: у вас есть класс .ai и .ai-main, перечисляем оба */
+.braid-container:has(.strand-ai:hover) .card-mini.ai,
+.braid-container:has(.strand-ai:hover) .card-mini.ai-main {
+  border-color: var(--accent2);
+  box-shadow: 0 0 25px rgba(167,139,250, 0.4); /* Фиолетовое свечение */
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(11, 15, 23, 1);
+}
+/* Навели на карточку AI -> подсвечиваем нить AI */
+.braid-container:has(.card-mini.ai:hover) .strand-ai,
+.braid-container:has(.card-mini.ai-main:hover) .strand-ai {
+  opacity: 1;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 10px var(--accent2));
+}
+
+/* Доп. эффект: когда одна нить активна, остальные немного тускнеют для фокуса */
+.braid-container:has(.strand:hover) .card-mini:not(:hover) {
+    /* Если мы наводим на нить, этот селектор сработает сложно, 
+       лучше не усложнять, чтобы не моргало. Оставим просто подсветку. */
+    transition: opacity 0.3s;
+}
+
