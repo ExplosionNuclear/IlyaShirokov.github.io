@@ -219,3 +219,16 @@
     padding: 6px 8px;
   }
   
+  /* Section accents */
+.section[data-accent="cyan"]  { --accentA: rgba(125,211,252,.22); --accentB: rgba(125,211,252,.10); }
+.section[data-accent="violet"]{ --accentA: rgba(167,139,250,.22); --accentB: rgba(167,139,250,.10); }
+.section[data-accent="green"] { --accentA: rgba(110,231,183,.22); --accentB: rgba(110,231,183,.10); }
+.section[data-accent="amber"] { --accentA: rgba(252,211,77,.22);  --accentB: rgba(252,211,77,.10); }
+
+/* Make cards inherit accent from their section */
+.section .card{
+  background:
+    radial-gradient(900px 260px at 15% 0%, var(--accentA, rgba(255,255,255,.06)), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+  border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
+}
