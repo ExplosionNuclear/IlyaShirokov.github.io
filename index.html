@@ -66,89 +66,135 @@
 
     
 
-    <section id="experience" class="section" data-accent="violet">
+    <section id="experience" class="section">
       <h2>Experience & Trajectory</h2>
-      
-      <div class="braid-layout">
-        <!-- Контейнер для косы -->
-        <div class="braid-column">
-          <svg id="braid-svg" width="100%" height="100%" preserveAspectRatio="none">
-            <!-- Сюда JS нарисует косу -->
-          </svg>
-        </div>
+      <p class="note" style="margin-bottom: 40px;">
+        Intertwining paths of Mathematics, Engineering, and AI Research.
+      </p>
     
-        <!-- Контейнер для карточек (позиционируются относительно косы) -->
-        <div class="cards-column">
+      <div class="braid-container">
+        
+        <!-- СТАТИЧНАЯ КОСА (Топологическая диаграмма) -->
+        <svg class="braid-svg" viewBox="0 0 100 1050" preserveAspectRatio="none">
+          <defs>
+            <!-- Градиенты для красоты -->
+            <linearGradient id="grad-math" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+            <linearGradient id="grad-dev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
+            <linearGradient id="grad-ai" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+            
+            <!-- Фильтр для свечения -->
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+    
+          <!-- 
+             ГРУППА КОСЫ. 
+             Мы рисуем линии дважды. 
+             Нижний слой — сплошной.
+             Верхний слой — "разрезает" нижний, создавая эффект переплетения (Halo effect).
+             Stroke: #0b0f17 (цвет фона) используется как ластик.
+          -->
           
-          <!-- Math Track (Cyan) -->
-          <div class="exp-card compact left" style="top: 2%;">
-            <div class="card-content" style="border-color: var(--accent);">
-              <div class="date">2018 — 2022</div>
-              <h3 class="title">PhD in Mathematics</h3>
-              <div class="role">Geometry & Topology</div>
-              <div class="tags">
-                <span class="tag">Spectral Geometry</span>
-                <span class="tag">Manifolds</span>
-              </div>
-            </div>
-            <div class="connector" style="background: var(--accent);"></div>
-          </div>
+          <!-- LAYER 1: Base Lines (Bottom) -->
+          <!-- Math (Cyan) -->
+          <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+                fill="none" stroke="url(#grad-math)" stroke-width="4" opacity="0.4" />
+          <!-- Dev (Green) -->
+          <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
+                fill="none" stroke="url(#grad-dev)" stroke-width="4" opacity="0.4" />
+          <!-- AI (Violet) -->
+          <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
+                fill="none" stroke="url(#grad-ai)" stroke-width="4" opacity="0.4" />
     
-          <!-- Dev Track (Green) -->
-          <div class="exp-card compact right" style="top: 18%;">
-            <div class="connector" style="background: #34d399;"></div>
-            <div class="card-content" style="border-color: #34d399;">
-              <div class="date">2019 — 2020</div>
-              <h3 class="title">Backend Intern</h3>
-              <div class="role">Yandex</div>
-              <div class="tags">
-                <span class="tag">C++</span>
-                <span class="tag">Distributed Systems</span>
-              </div>
-            </div>
-          </div>
     
-          <!-- Dev Track (Green) -->
-          <div class="exp-card compact right" style="top: 32%;">
-            <div class="connector" style="background: #34d399;"></div>
-            <div class="card-content" style="border-color: #34d399;">
-              <div class="date">2020 — 2023</div>
-              <h3 class="title">Senior Backend Engineer</h3>
-              <div class="role">High-load Systems</div>
-              <div class="tags">
-                <span class="tag">Go</span>
-                <span class="tag">Kafka</span>
-                <span class="tag">Architecture</span>
-              </div>
-            </div>
-          </div>
+          <!-- LAYER 2: Crossing Over (Creates the 3D Weave) -->
+          <!-- Рисуем сегменты поверх, с толстой темной обводкой, чтобы перекрыть нижние линии -->
+          
+          <!-- Cyan Over -->
+          <g>
+             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+                   fill="none" stroke="#0b0f17" stroke-width="12" /> <!-- Eraser -->
+             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+                   fill="none" stroke="url(#grad-math)" stroke-width="4" filter="url(#glow)" />
+             <!-- Маска: dasharray делает линию прерывистой, имитируя ныряние "под" -->
+             <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="1s" fill="freeze" /> 
+             <!-- Для простоты используем stroke-dasharray вручную подобранный под паттерн -->
+             <!-- Паттерн: Виден 30, Пропуск 20 (примерно) -->
+             <path d="M30,0 Q30,50 50,100 T70,200 T50,300 T30,400 T50,500 T70,600 T50,700 T30,800 T50,900 T70,1000" 
+                   fill="none" stroke="#0b0f17" stroke-width="14" stroke-dasharray="20, 145" stroke-dashoffset="-30" />
+          </g>
     
-          <!-- AI Track (Violet) -->
-          <div class="exp-card compact left" style="top: 55%;">
-            <div class="card-content" style="border-color: var(--accent2);">
-              <div class="date">2023</div>
-              <h3 class="title">AI Safety Research Fellow</h3>
-              <div class="role">Independent</div>
-              <div class="tags">
-                <span class="tag">Toy Models</span>
-                <span class="tag">SAE</span>
-              </div>
-            </div>
-            <div class="connector" style="background: var(--accent2);"></div>
-          </div>
+          <!-- Dev Over -->
+          <g>
+              <!-- Делаем "дырки" в зеленой линии там, где она идет ПОД синей -->
+             <path d="M70,0 Q70,50 50,100 T30,200 T50,300 T70,400 T50,500 T30,600 T50,700 T70,800 T50,900 T30,1000" 
+                   fill="none" stroke="url(#grad-dev)" stroke-width="4" filter="url(#glow)" 
+                   stroke-dasharray="60, 100" stroke-dashoffset="0"/>
+          </g>
+          
+          <!-- AI Over (Central strand weaving) -->
+          <g>
+             <path d="M50,0 Q50,50 50,100 Q50,150 50,200 Q50,250 50,300 Q50,350 50,400 Q50,450 50,500 Q50,550 50,600 Q50,650 50,700 Q50,750 50,800 Q50,850 50,900 Q50,950 50,1000" 
+                   fill="none" stroke="url(#grad-ai)" stroke-width="4" filter="url(#glow)"
+                   stroke-dasharray="40, 120" stroke-dashoffset="-20"/>
+          </g>
     
-          <!-- AI Track (Violet) -->
-          <div class="exp-card compact left" style="top: 75%;">
-            <div class="card-content" style="border-color: var(--accent2);">
-              <div class="date">2023 — Present</div>
-              <h3 class="title">Senior AI Researcher</h3>
-              <div class="role">Mechanistic Interpretability</div>
-              <div class="desc">Tracing information flow in transformers & Singular Learning Theory.</div>
-            </div>
-            <div class="connector" style="background: var(--accent2);"></div>
-          </div>
+        </svg>
     
+        <!-- КАРТОЧКИ (5 штук, маленькие) -->
+        
+        <!-- 1. Math PhD -->
+        <div class="exp-mini left" style="top: 2%;">
+          <div class="card-mini math">
+            <div class="mini-year">2018-2022</div>
+            <div class="mini-title">PhD in Mathematics</div>
+            <div class="mini-desc">Geometry & Topology</div>
+          </div>
+          <div class="line-connect"></div>
         </div>
+    
+        <!-- 2. Backend Intern -->
+        <div class="exp-mini right" style="top: 20%;">
+          <div class="line-connect"></div>
+          <div class="card-mini dev">
+            <div class="mini-year">2019-2020</div>
+            <div class="mini-title">Backend Intern</div>
+            <div class="mini-desc">Yandex (C++)</div>
+          </div>
+        </div>
+    
+        <!-- 3. Senior Engineer -->
+        <div class="exp-mini right" style="top: 38%;">
+          <div class="line-connect"></div>
+          <div class="card-mini dev">
+            <div class="mini-year">2020-2023</div>
+            <div class="mini-title">Senior Engineer</div>
+            <div class="mini-desc">High-load Architecture</div>
+          </div>
+        </div>
+    
+        <!-- 4. Independent Research -->
+        <div class="exp-mini left" style="top: 58%;">
+          <div class="card-mini ai">
+            <div class="mini-year">2023</div>
+            <div class="mini-title">AI Safety Fellow</div>
+            <div class="mini-desc">Toy Models & SAE</div>
+          </div>
+          <div class="line-connect"></div>
+        </div>
+    
+        <!-- 5. Current Role -->
+        <div class="exp-mini left" style="top: 80%;">
+          <div class="card-mini ai-main">
+            <div class="mini-year">Present</div>
+            <div class="mini-title">Senior AI Researcher</div>
+            <div class="mini-desc">Mech. Interpretability</div>
+          </div>
+          <div class="line-connect"></div>
+        </div>
+    
       </div>
     </section>
 

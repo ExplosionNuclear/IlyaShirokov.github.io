@@ -233,151 +233,126 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* --- Braid Layout --- */
-.braid-layout {
+/* --- Braid Container --- */
+.braid-container {
   position: relative;
-  /* Высота задает длину всей секции с косой. 
-     Увеличьте, если карточки наезжают друг на друга */
-  height: 1100px; 
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  /* Высота задана жестко, чтобы соответствовать длине SVG. 
+     Это предотвращает "наезжание" блоков друг на друга. */
+  height: 1050px; 
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 60px; /* Отступ снизу */
 }
 
-.braid-column {
+/* Сама SVG коса по центру */
+.braid-svg {
   position: absolute;
-  top: 0; bottom: 0;
-  width: 160px; /* Ширина самой косы */
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 0;
-  pointer-events: none; /* Чтобы сквозь косу можно было кликать, если надо */
-}
-
-/* --- Compact Cards --- */
-.cards-column {
-  position: relative;
-  width: 100%;
+  width: 120px; /* Ширина косы */
   height: 100%;
+  z-index: 0;
+  overflow: visible; /* Важно, чтобы свечение не обрезалось */
 }
 
-.exp-card {
+/* --- Mini Cards Styles --- */
+.exp-mini {
   position: absolute;
-  width: 38%; /* Узкие карточки */
+  width: 50%;
   display: flex;
   align-items: center;
   z-index: 2;
 }
 
-/* Левая сторона */
-.exp-card.left {
+/* Левые карточки */
+.exp-mini.left {
   left: 0;
+  padding-right: 70px; /* Отступ от центра (косы) */
   justify-content: flex-end;
   text-align: right;
-  padding-right: 90px; /* Отступ до центра (косы) */
 }
-/* Правая сторона */
-.exp-card.right {
+
+/* Правые карточки */
+.exp-mini.right {
   right: 0;
+  padding-left: 70px;
   justify-content: flex-start;
   text-align: left;
-  padding-left: 90px;
 }
 
-.card-content {
-  background: rgba(11, 15, 23, 0.85); /* Почти непрозрачный фон, чтобы текст читался */
-  backdrop-filter: blur(8px);
+/* Дизайн самой карточки (компактный) */
+.card-mini {
+  background: rgba(17, 24, 39, 0.9);
   border: 1px solid var(--line);
+  padding: 10px 14px;
   border-radius: 12px;
-  padding: 12px 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  transition: transform 0.2s;
-  min-width: 240px;
+  backdrop-filter: blur(6px);
+  min-width: 180px;
+  max-width: 240px;
+  transition: transform 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.card-content:hover {
-  transform: scale(1.02);
-  background: rgba(17, 24, 39, 0.95);
+.card-mini:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.3);
 }
 
-.exp-card.compact .title {
-  font-size: 15px;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text);
+/* Цветовые акценты для карточек */
+.card-mini.math { border-left: 3px solid var(--accent); } /* Cyan */
+.exp-mini.right .card-mini.math { border-left: none; border-right: 3px solid var(--accent); }
+
+.card-mini.dev { border-left: 3px solid #34d399; } /* Green */
+.exp-mini.right .card-mini.dev { border-left: none; border-right: 3px solid #34d399; }
+
+.card-mini.ai { border-left: 3px solid var(--accent2); } /* Violet */
+.exp-mini.right .card-mini.ai { border-left: none; border-right: 3px solid var(--accent2); }
+
+.card-mini.ai-main { 
+  border: 1px solid var(--accent2); 
+  box-shadow: 0 0 15px rgba(167,139,250, 0.15);
 }
 
-.exp-card.compact .role {
-  font-size: 13px;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-
-.exp-card.compact .date {
-  font-size: 11px;
-  color: var(--muted);
+/* Типографика внутри карточек */
+.mini-year {
   font-family: var(--mono);
-  margin-bottom: 2px;
-}
-
-.exp-card.compact .desc {
-  font-size: 12px;
-  line-height: 1.4;
-  color: #d1d5db;
-  margin-top: 6px;
-}
-
-/* Тэги навыков */
-.tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-  justify-content: inherit; /* Выравнивание зависит от left/right */
-}
-.tag {
   font-size: 10px;
-  background: rgba(255,255,255,0.08);
-  padding: 2px 6px;
-  border-radius: 4px;
   color: var(--muted);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+.mini-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.mini-desc {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
 }
 
-/* --- Connectors (Линии от карточки к косе) --- */
-.connector {
-  position: absolute;
-  height: 2px;
-  width: 40px; /* Длина усика */
-  top: 50%;
-  opacity: 0.6;
+/* Линия-коннектор от карточки к косе */
+.line-connect {
+  width: 40px;
+  height: 1px;
+  background: var(--line);
+  margin: 0 10px;
+  opacity: 0.5;
 }
-.exp-card.left .connector {
-  right: 40px; /* Прилепляем к правому краю блока (ближе к центру экрана) */
-}
-.exp-card.right .connector {
-  left: 40px;
-}
-/* Точка на конце коннектора */
-.connector::after {
-  content: '';
-  position: absolute;
-  width: 6px; height: 6px;
-  background: inherit;
-  border-radius: 50%;
-  top: -2px;
-}
-.exp-card.left .connector::after { right: -3px; }
-.exp-card.right .connector::after { left: -3px; }
 
-
-/* --- Mobile --- */
-@media (max-width: 768px) {
-  .braid-column {
-    left: 20px; /* Коса сдвигается влево */
-    width: 60px;
+/* --- Mobile Fix --- */
+@media (max-width: 640px) {
+  .braid-svg {
+    left: 20px; /* Сдвигаем косу влево */
     transform: none;
+    width: 60px;
+    opacity: 0.5;
   }
-  .exp-card {
+  
+  .exp-mini {
     width: 100%;
     position: relative !important;
     top: auto !important;
@@ -385,10 +360,17 @@
     right: auto !important;
     text-align: left !important;
     justify-content: flex-start !important;
-    padding: 0 0 0 70px; /* Место под косу слева */
-    margin-bottom: 20px;
+    padding: 0 0 0 70px; /* Место слева под косу */
+    margin-bottom: 24px;
   }
-  .tags { justify-content: flex-start; }
-  .connector { display: none; } /* Убираем соединители на мобиле */
+  
+  .card-mini {
+    border-left: 3px solid var(--line); /* Унифицируем бордер на мобиле */
+    border-right: none !important;
+    max-width: 100%;
+  }
+  
+  .line-connect { display: none; }
+  .braid-container { height: auto; }
 }
 
