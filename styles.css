@@ -343,3 +343,20 @@
     100% { stroke-dashoffset: -2400; opacity: 0; }
   }
 }
+
+/* 1) make the whole layout wider (so the track has room) */
+.container{
+  max-width: 1240px;
+}
+
+/* 2) make the topology track SVG taller/cleaner and definitely not cramped */
+.track-svg{
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+}
+
+/* 3) optional: a bit more padding inside the track card */
+.track{
+  padding: 22px;
+}
