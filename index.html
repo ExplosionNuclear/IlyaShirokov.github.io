@@ -64,90 +64,70 @@
       </div>
     </section>
 
-    <section id="tracks" class="section">
-      <h2>Tracks</h2>
+    <svg class="track-svg" viewBox="0 0 1280 260" role="img" aria-label="Topology track">
+      <defs>
+        <!-- underlay arrow (white-ish) -->
+        <marker id="arrow-topology-under" viewBox="0 0 10 10" refX="9.2" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill-under" />
+        </marker>
     
-      <div class="grid tracks-grid">
-        <div class="card track" data-accent="topology">
-          <div class="track-head">
-            <h3>Topology</h3>
-            <span class="meta">research trajectory</span>
-          </div>
+        <!-- main arrow (colored) -->
+        <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.2" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+        </marker>
+      </defs>
     
-          <svg class="track-svg" viewBox="0 0 1280 240" role="img" aria-label="Topology track">
-            <defs>
-              <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.2" refY="5"
-                      markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
-              </marker>
-            </defs>
+      <!-- same curve twice: underlay + colored -->
+      <path class="track-path-under" marker-end="url(#arrow-topology-under)"
+            d="M 80 130
+               C 190 35, 300 225, 410 130
+               S 630 35, 740 130
+               S 960 225, 1070 130
+               S 1180 35, 1240 130" />
     
-            <!-- main path -->
-            <path class="track-path" marker-end="url(#arrow-topology)"
-                  d="M 80 120
-                     C 190 35, 300 205, 410 120
-                     S 630 35, 740 120
-                     S 960 205, 1070 120
-                     S 1180 35, 1240 120" />
+      <path class="track-path" marker-end="url(#arrow-topology)"
+            d="M 80 130
+               C 190 35, 300 225, 410 130
+               S 630 35, 740 130
+               S 960 225, 1070 130
+               S 1180 35, 1240 130" />
     
-            <!-- nodes: dots -->
-            <circle cx="110" cy="120" r="6.5" class="node-dot"/>
+      <!-- nodes -->
+      <circle cx="110" cy="130" r="5.5" class="node-dot"/>
+      <circle cx="330" cy="130" r="5.5" class="node-dot"/>
+      <circle cx="520" cy="130" r="5.5" class="node-dot"/>
+      <circle cx="720" cy="130" r="5.5" class="node-dot"/>
+      <circle cx="920" cy="130" r="5.5" class="node-dot"/>
+      <circle cx="1120" cy="130" r="5.5" class="node-dot"/>
     
-            <circle cx="330" cy="120" r="6.5" class="node-dot"/>
+      <!-- labels: ALWAYS visible text -->
+      <rect x="20" y="175" rx="12" ry="12" width="210" height="36" class="label-pill"/>
+      <text x="125" y="199" text-anchor="middle" class="label-text">Solved a problem @ Summer REU (MIPT, 2021)</text>
     
-            <circle cx="520" cy="120" r="6.5" class="node-dot"/>
+      <rect x="210" y="38" rx="12" ry="12" width="240" height="36" class="label-pill"/>
+      <text x="330" y="62" text-anchor="middle" class="label-text">Invited to PhD (Geometry & Topology, PDMI RAS)</text>
     
-            <circle cx="720" cy="120" r="6.5" class="node-dot"/>
+      <rect x="400" y="175" rx="12" ry="12" width="240" height="36" class="label-pill"/>
+      <a href="PASTE_LINK_F_NEIGHBORS" target="_blank" rel="noreferrer">
+        <text x="520" y="199" text-anchor="middle" class="label-text">Paper: Hopf-type theorems for f-neighbors</text>
+      </a>
     
-            <circle cx="920" cy="120" r="6.5" class="node-dot"/>
+      <rect x="610" y="38" rx="12" ry="12" width="220" height="36" class="label-pill"/>
+      <a href="PASTE_LINK_NEUROGEOMETRY" target="_blank" rel="noreferrer">
+        <text x="720" y="62" text-anchor="middle" class="label-text">Hopf fibration → neurogeometry (LNCS)</text>
+      </a>
     
-            <circle cx="1120" cy="120" r="6.5" class="node-dot"/>
+      <rect x="835" y="175" rx="12" ry="12" width="170" height="36" class="label-pill"/>
+      <a href="PASTE_LINK_CONVEX_SURFACES" target="_blank" rel="noreferrer">
+        <text x="920" y="199" text-anchor="middle" class="label-text">Hopf-type (convex surfaces)</text>
+      </a>
     
-            <!-- labels (alternating top/bottom for readability) -->
-            <g class="label">
-              <rect x="20" y="155" rx="12" ry="12" width="180" height="34" class="label-pill"/>
-              <text x="110" y="178" text-anchor="middle" class="label-text">Summer REU @ MIPT (2021)</text>
-            </g>
-    
-            <g class="label">
-              <rect x="215" y="35" rx="12" ry="12" width="230" height="34" class="label-pill"/>
-              <text x="330" y="58" text-anchor="middle" class="label-text">Invited to PhD @ PDMI RAS</text>
-            </g>
-    
-            <g class="label">
-              <rect x="405" y="155" rx="12" ry="12" width="230" height="34" class="label-pill"/>
-              <a href="PASTE_LINK_F_NEIGHBORS" target="_blank" rel="noreferrer">
-                <text x="520" y="178" text-anchor="middle" class="label-link">Hopf-type theorems for f-neighbors</text>
-              </a>
-            </g>
-    
-            <g class="label">
-              <rect x="615" y="35" rx="12" ry="12" width="210" height="34" class="label-pill"/>
-              <a href="PASTE_LINK_NEUROGEOMETRY" target="_blank" rel="noreferrer">
-                <text x="720" y="58" text-anchor="middle" class="label-link">Hopf fibration → neurogeometry</text>
-              </a>
-            </g>
-    
-            <g class="label">
-              <rect x="835" y="155" rx="12" ry="12" width="170" height="34" class="label-pill"/>
-              <a href="PASTE_LINK_CONVEX_SURFACES" target="_blank" rel="noreferrer">
-                <text x="920" y="178" text-anchor="middle" class="label-link">Convex surfaces</text>
-              </a>
-            </g>
-    
-            <g class="label final">
-              <rect x="1010" y="35" rx="14" ry="14" width="260" height="52" class="final-pill"/>
-              <text x="1140" y="57" text-anchor="middle" class="final-text">Triangulable manifolds</text>
-              <text x="1140" y="76" text-anchor="middle" class="final-sub">(no Riemannian metric needed)</text>
-            </g>
-          </svg>
-    
-          <p class="muted" style="margin-top:10px;">
-            Tip: replace <span style="font-family:var(--mono);">PASTE_LINK_...</span> with your actual paper/post links.
-          </p>
-        </div>
-      </div>
-    </section>
+      <rect x="1010" y="38" rx="14" ry="14" width="260" height="60" class="final-pill"/>
+      <text x="1140" y="66" text-anchor="middle" class="final-text">Hopf-type for triangulable manifolds</text>
+      <text x="1140" y="86" text-anchor="middle" class="final-sub">(no Riemannian metric needed!)</text>
+    </svg>
     
 
     <section id="experience" class="section" data-accent="cyan">
