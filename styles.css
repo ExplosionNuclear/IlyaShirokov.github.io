@@ -233,155 +233,162 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* --- Braid Timeline Styles --- */
-
-.braid-container {
+/* --- Braid Layout --- */
+.braid-layout {
   position: relative;
-  /* Высота должна быть достаточной для всех карточек. 
-     Если карточек больше, увеличьте height */
-  height: 900px; 
-  width: 100%;
-  margin: 40px 0;
+  /* Высота задает длину всей секции с косой. 
+     Увеличьте, если карточки наезжают друг на друга */
+  height: 1100px; 
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.braid-svg {
+.braid-column {
   position: absolute;
-  top: 0;
+  top: 0; bottom: 0;
+  width: 160px; /* Ширина самой косы */
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px; /* Ширина области, где вьются нити */
-  height: 100%;
   z-index: 0;
-  opacity: 0.8;
-  /* Добавляем маску, чтобы нити исчезали снизу красиво */
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  pointer-events: none; /* Чтобы сквозь косу можно было кликать, если надо */
 }
 
-.strand {
-  fill: none;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  transition: all 0.4s ease;
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+/* --- Compact Cards --- */
+.cards-column {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
-
-.strand-math { stroke: var(--accent); }     /* Cyan */
-.strand-ai   { stroke: var(--accent2); }    /* Violet */
-.strand-dev  { stroke: #34d399; }           /* Green */
-
-/* Эффект при наведении на контейнер: гасим неактивные нити? 
-   Или просто заставляем их светиться */
-.braid-container:hover .strand {
-  opacity: 0.3;
-}
-.braid-container:hover .strand:hover {
-  opacity: 1;
-  stroke-width: 4;
-  filter: drop-shadow(0 0 8px currentColor);
-  z-index: 10;
-}
-
-/* --- Experience Cards Positioning --- */
 
 .exp-card {
   position: absolute;
-  width: 45%; /* Карточка занимает почти половину ширины */
-  z-index: 1;
+  width: 38%; /* Узкие карточки */
   display: flex;
+  align-items: center;
+  z-index: 2;
 }
 
-/* Карточки слева */
+/* Левая сторона */
 .exp-card.left {
   left: 0;
   justify-content: flex-end;
-  padding-right: 40px; /* Отступ от центральных нитей */
+  text-align: right;
+  padding-right: 90px; /* Отступ до центра (косы) */
 }
-
-/* Карточки справа */
+/* Правая сторона */
 .exp-card.right {
   right: 0;
   justify-content: flex-start;
-  padding-left: 40px;
+  text-align: left;
+  padding-left: 90px;
 }
 
-/* Соединительная линия от карточки к косе (опционально) */
-.exp-card::after {
+.card-content {
+  background: rgba(11, 15, 23, 0.85); /* Почти непрозрачный фон, чтобы текст читался */
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+  min-width: 240px;
+}
+
+.card-content:hover {
+  transform: scale(1.02);
+  background: rgba(17, 24, 39, 0.95);
+}
+
+.exp-card.compact .title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+.exp-card.compact .role {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.exp-card.compact .date {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--mono);
+  margin-bottom: 2px;
+}
+
+.exp-card.compact .desc {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #d1d5db;
+  margin-top: 6px;
+}
+
+/* Тэги навыков */
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  justify-content: inherit; /* Выравнивание зависит от left/right */
+}
+.tag {
+  font-size: 10px;
+  background: rgba(255,255,255,0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--muted);
+}
+
+/* --- Connectors (Линии от карточки к косе) --- */
+.connector {
+  position: absolute;
+  height: 2px;
+  width: 40px; /* Длина усика */
+  top: 50%;
+  opacity: 0.6;
+}
+.exp-card.left .connector {
+  right: 40px; /* Прилепляем к правому краю блока (ближе к центру экрана) */
+}
+.exp-card.right .connector {
+  left: 40px;
+}
+/* Точка на конце коннектора */
+.connector::after {
   content: '';
   position: absolute;
-  top: 20px;
-  width: 30px;
-  height: 1px;
-  background: var(--line);
+  width: 6px; height: 6px;
+  background: inherit;
+  border-radius: 50%;
+  top: -2px;
 }
-.exp-card.left::after { right: 10px; }
-.exp-card.right::after { left: 10px; }
+.exp-card.left .connector::after { right: -3px; }
+.exp-card.right .connector::after { left: -3px; }
 
-/* Стили внутри карточки опыта */
-.exp-card .card {
-  width: 100%;
-  max-width: 400px;
-  /* Делаем карточку чуть более прозрачной и стильной */
-  backdrop-filter: blur(4px);
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: transform 0.2s, border-color 0.2s;
-}
 
-.exp-card .card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-}
-
-/* Индикатор трека внутри карточки */
-.pill-sm {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-top: 10px;
-  display: inline-block;
-  background: rgba(255,255,255,0.05);
-}
-.pill-sm.cyan { color: var(--accent); border: 1px solid rgba(125,211,252,0.2); }
-.pill-sm.violet { color: var(--accent2); border: 1px solid rgba(167,139,250,0.2); }
-.pill-sm.green { color: #34d399; border: 1px solid rgba(52,211,153,0.2); }
-
-.role {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 4px 0;
-}
-.desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* Мобильная адаптация */
+/* --- Mobile --- */
 @media (max-width: 768px) {
-  .braid-svg {
-    left: 20px; /* Сдвигаем косу влево */
+  .braid-column {
+    left: 20px; /* Коса сдвигается влево */
+    width: 60px;
     transform: none;
-    width: 60px; /* Делаем её узкой полоской */
-    opacity: 0.4;
   }
-  
   .exp-card {
     width: 100%;
-    position: relative !important; /* Отключаем абсолют */
+    position: relative !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
-    padding: 0 0 0 50px; /* Отступ слева под косу */
-    margin-bottom: 24px;
-    justify-content: flex-start;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding: 0 0 0 70px; /* Место под косу слева */
+    margin-bottom: 20px;
   }
-  
-  .exp-card::after { display: none; }
-  .braid-container { height: auto; }
+  .tags { justify-content: flex-start; }
+  .connector { display: none; } /* Убираем соединители на мобиле */
 }
 

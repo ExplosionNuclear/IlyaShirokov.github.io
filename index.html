@@ -66,78 +66,89 @@
 
     
 
-    <section id="experience" class="section">
+    <section id="experience" class="section" data-accent="violet">
       <h2>Experience & Trajectory</h2>
-      <p class="lead" style="margin-bottom: 40px; color: var(--muted);">
-        My path intertwining Mathematics, Software Engineering, and AI Research.
-      </p>
+      
+      <div class="braid-layout">
+        <!-- Контейнер для косы -->
+        <div class="braid-column">
+          <svg id="braid-svg" width="100%" height="100%" preserveAspectRatio="none">
+            <!-- Сюда JS нарисует косу -->
+          </svg>
+        </div>
     
-      <div class="braid-container">
-        <!-- SVG Фон с косами -->
-        <svg class="braid-svg" preserveAspectRatio="none" viewBox="0 0 100 400">
-          <defs>
-            <!-- Градиенты для нитей -->
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:var(--accent); stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:var(--accent); stop-opacity:0.1" />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:var(--accent2); stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:var(--accent2); stop-opacity:0.1" />
-            </linearGradient>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#34d399; stop-opacity:0.6" /> <!-- Green for Dev -->
-              <stop offset="100%" style="stop-color:#34d399; stop-opacity:0.1" />
-            </linearGradient>
-          </defs>
-    
-          <!-- 
-             Сами нити (Bezier curves). 
-             Координаты подобраны так, чтобы они переплетались вертикально.
-          -->
+        <!-- Контейнер для карточек (позиционируются относительно косы) -->
+        <div class="cards-column">
+          
           <!-- Math Track (Cyan) -->
-          <path class="strand strand-math" d="M30,0 C80,50 20,100 50,150 C80,200 20,250 50,300 C80,350 30,400 30,400" />
-          
-          <!-- AI Research Track (Violet) -->
-          <path class="strand strand-ai" d="M50,0 C20,50 80,100 50,150 C20,200 80,250 50,300 C20,350 50,400 50,400" />
-          
-          <!-- Engineering Track (Green) -->
-          <path class="strand strand-dev" d="M70,0 C20,50 80,100 50,150 C20,200 80,250 50,300 C20,350 70,400 70,400" />
-        </svg>
-    
-        <!-- Карточки опыта -->
-        <!-- Position: проценты сверху (top) должны примерно совпадать с узлами на SVG -->
-        
-        <div class="exp-card left" style="top: 10%;">
-          <div class="card" data-track="math">
-            <div class="meta">2018 — 2022</div>
-            <h3>PhD in Mathematics</h3>
-            <p class="role">Geometry & Topology</p>
-            <p class="desc">Focus on spectral geometry. Proved theorems on isospectral manifolds.</p>
-            <span class="pill-sm cyan">Math Track</span>
+          <div class="exp-card compact left" style="top: 2%;">
+            <div class="card-content" style="border-color: var(--accent);">
+              <div class="date">2018 — 2022</div>
+              <h3 class="title">PhD in Mathematics</h3>
+              <div class="role">Geometry & Topology</div>
+              <div class="tags">
+                <span class="tag">Spectral Geometry</span>
+                <span class="tag">Manifolds</span>
+              </div>
+            </div>
+            <div class="connector" style="background: var(--accent);"></div>
           </div>
-        </div>
     
-        <div class="exp-card right" style="top: 35%;">
-          <div class="card" data-track="dev">
-            <div class="meta">2020 — 2023</div>
-            <h3>Senior Backend Engineer</h3>
-            <p class="role">High-load Systems</p>
-            <p class="desc">Designed distributed systems processing 10k RPS. Optimized geometric algorithms.</p>
-            <span class="pill-sm green">Engineering Track</span>
+          <!-- Dev Track (Green) -->
+          <div class="exp-card compact right" style="top: 18%;">
+            <div class="connector" style="background: #34d399;"></div>
+            <div class="card-content" style="border-color: #34d399;">
+              <div class="date">2019 — 2020</div>
+              <h3 class="title">Backend Intern</h3>
+              <div class="role">Yandex</div>
+              <div class="tags">
+                <span class="tag">C++</span>
+                <span class="tag">Distributed Systems</span>
+              </div>
+            </div>
           </div>
-        </div>
     
-        <div class="exp-card left" style="top: 60%;">
-          <div class="card" data-track="ai">
-            <div class="meta">2023 — Present</div>
-            <h3>Senior AI Researcher</h3>
-            <p class="role">Mechanistic Interpretability</p>
-            <p class="desc">Investigating induction heads and superposition in LLMs using singular learning theory.</p>
-            <span class="pill-sm violet">AI Research Track</span>
+          <!-- Dev Track (Green) -->
+          <div class="exp-card compact right" style="top: 32%;">
+            <div class="connector" style="background: #34d399;"></div>
+            <div class="card-content" style="border-color: #34d399;">
+              <div class="date">2020 — 2023</div>
+              <h3 class="title">Senior Backend Engineer</h3>
+              <div class="role">High-load Systems</div>
+              <div class="tags">
+                <span class="tag">Go</span>
+                <span class="tag">Kafka</span>
+                <span class="tag">Architecture</span>
+              </div>
+            </div>
           </div>
+    
+          <!-- AI Track (Violet) -->
+          <div class="exp-card compact left" style="top: 55%;">
+            <div class="card-content" style="border-color: var(--accent2);">
+              <div class="date">2023</div>
+              <h3 class="title">AI Safety Research Fellow</h3>
+              <div class="role">Independent</div>
+              <div class="tags">
+                <span class="tag">Toy Models</span>
+                <span class="tag">SAE</span>
+              </div>
+            </div>
+            <div class="connector" style="background: var(--accent2);"></div>
+          </div>
+    
+          <!-- AI Track (Violet) -->
+          <div class="exp-card compact left" style="top: 75%;">
+            <div class="card-content" style="border-color: var(--accent2);">
+              <div class="date">2023 — Present</div>
+              <h3 class="title">Senior AI Researcher</h3>
+              <div class="role">Mechanistic Interpretability</div>
+              <div class="desc">Tracing information flow in transformers & Singular Learning Theory.</div>
+            </div>
+            <div class="connector" style="background: var(--accent2);"></div>
+          </div>
+    
         </div>
-        
       </div>
     </section>
 
