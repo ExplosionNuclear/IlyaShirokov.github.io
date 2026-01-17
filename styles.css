@@ -233,57 +233,70 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* ===== Topology track: high contrast + visible arrow ===== */
+/* ===== TOPOLOGY TRACK STYLES (paste into styles.css) ===== */
 
 .track[data-accent="topology"]{
-  --trk: #a78bfa;                 /* bright violet */
+  --trk: #a78bfa;                 /* violet */
   --trkGlow: rgba(167,139,250,.55);
-  --trkLite: rgba(255,255,255,.65);
 }
 
-/* make svg area a bit lighter */
+/* header row inside the card */
+.track-head{
+  display:flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* svg frame */
 .track-svg{
+  width: 100%;
+  height: auto;
+  display:block;
+  border-radius: 14px;
+  border: 1px solid var(--line);
   background: rgba(255,255,255,.04);
 }
 
-/* TWO-layer stroke: white underlay + colored top */
-.track .track-path-under{
+/* main curve: underlay + colored stroke so it pops on dark bg */
+.track-path-under{
   fill: none;
   stroke: rgba(255,255,255,.38);
-  stroke-width: 7;
+  stroke-width: 6.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.track .track-path{
+.track-path{
   fill: none;
   stroke: var(--trk);
-  stroke-width: 5;
+  stroke-width: 5; /* slightly thinner */
   stroke-linecap: round;
   stroke-linejoin: round;
   filter: drop-shadow(0 10px 22px rgba(0,0,0,.55))
           drop-shadow(0 0 18px var(--trkGlow));
 }
 
-/* arrowhead: also with underlay using separate marker */
-.track .arrow-fill{ fill: var(--trk); }
-.track .arrow-fill-under{ fill: rgba(255,255,255,.55); }
+/* arrowheads */
+.arrow-fill{ fill: var(--trk); }
+.arrow-fill-under{ fill: rgba(255,255,255,.55); }
 
-/* nodes: small but bright */
-.track .node-dot{
+/* nodes */
+.node-dot{
   fill: var(--trk);
   stroke: rgba(0,0,0,.35);
   stroke-width: 2;
 }
 
-/* labels: lighter pill + darker text outline */
-.track .label-pill{
+/* label pills + readable text */
+.label-pill{
   fill: rgba(255,255,255,.10);
   stroke: rgba(255,255,255,.20);
   stroke-width: 1;
 }
 
-.track .label-text{
+.label-text{
   font: 14px var(--mono);
   fill: rgba(255,255,255,.96);
   paint-order: stroke fill;
@@ -291,30 +304,22 @@
   stroke-width: 2px;
 }
 
-/* clickable labels look like links */
-.track a .label-text{
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,.45);
-  text-underline-offset: 3px;
-}
-.track a:hover .label-text{
-  text-decoration-color: rgba(255,255,255,.85);
-}
-
-/* final */
-.track .final-pill{
+/* final box */
+.final-pill{
   fill: rgba(255,255,255,.08);
   stroke: rgba(255,255,255,.28);
   stroke-width: 1.2;
 }
-.track .final-text{
+
+.final-text{
   font: 14px var(--mono);
   fill: rgba(255,255,255,.98);
   paint-order: stroke fill;
   stroke: rgba(0,0,0,.55);
   stroke-width: 2px;
 }
-.track .final-sub{
+
+.final-sub{
   font: 13px var(--mono);
   fill: rgba(255,255,255,.88);
   paint-order: stroke fill;
@@ -322,18 +327,19 @@
   stroke-width: 2px;
 }
 
-/* smoother loop: draw + pause + reset */
+/* animation: draw + pause + reset (pleasant loop, slower at end) */
 @media (prefers-reduced-motion: no-preference){
-  .track .track-path-under,
-  .track .track-path{
+  .track-path-under,
+  .track-path{
     stroke-dasharray: 2400;
     stroke-dashoffset: 2400;
-    animation: trackDraw 4.8s cubic-bezier(.22,.85,.24,1) infinite;
+    animation: topologyDraw 5.0s cubic-bezier(.22,.85,.24,1) infinite;
   }
-  @keyframes trackDraw{
+
+  @keyframes topologyDraw{
     0%   { stroke-dashoffset: 2400; opacity: 1; }
     60%  { stroke-dashoffset: 0;    opacity: 1; }
-    85%  { stroke-dashoffset: 0;    opacity: .95; } /* pause */
-    100% { stroke-dashoffset: -2400; opacity: 0; }  /* clean reset */
+    86%  { stroke-dashoffset: 0;    opacity: .95; }
+    100% { stroke-dashoffset: -2400; opacity: 0; }
   }
 }
