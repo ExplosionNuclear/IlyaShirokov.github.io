@@ -64,74 +64,81 @@
       </div>
     </section>
 
-    <!-- ===== UPDATED TOPOLOGY TRACK SVG (replace your current <svg ...>...</svg> with this) ===== -->
-<svg class="track-svg" viewBox="0 0 1600 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Topology track" overflow="visible">
-  <defs>
-    <marker id="arrow-topology-under" viewBox="0 0 12 12" refX="11" refY="6"
-            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
-      <path d="M 0 1 L 12 6 L 0 11 z" class="arrow-fill-under" />
-    </marker>
+    
 
-    <marker id="arrow-topology" viewBox="0 0 12 12" refX="11" refY="6"
-            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
-      <path d="M 0 1 L 12 6 L 0 11 z" class="arrow-fill" />
-    </marker>
-  </defs>
-
-  <!-- curve (underlay + color) -->
-  <path class="track-path-under" marker-end="url(#arrow-topology-under)"
-        d="M 80 130
-           C 220 35, 360 225, 500 130
-           S 760 35, 900 130
-           S 1160 225, 1300 130
-           S 1460 35, 1560 130" />
-
-  <path class="track-path" marker-end="url(#arrow-topology)"
-        d="M 80 130
-           C 220 35, 360 225, 500 130
-           S 760 35, 900 130
-           S 1160 225, 1300 130
-           S 1460 35, 1560 130" />
-
-  <!-- nodes -->
-  <circle cx="120" cy="130" r="5.5" class="node-dot"/>
-  <circle cx="360" cy="130" r="5.5" class="node-dot"/>
-  <circle cx="600" cy="130" r="5.5" class="node-dot"/>
-  <circle cx="840" cy="130" r="5.5" class="node-dot"/>
-  <circle cx="1080" cy="130" r="5.5" class="node-dot"/>
-  <circle cx="1320" cy="130" r="5.5" class="node-dot"/>
-
-  <!-- labels -->
-  <rect x="30" y="175" rx="12" ry="12" width="300" height="38" class="label-pill"/>
-  <text x="180" y="200" text-anchor="middle" class="label-text">Summer REU @ MIPT (2021)</text>
-
-  <rect x="240" y="38" rx="12" ry="12" width="320" height="38" class="label-pill"/>
-  <text x="400" y="63" text-anchor="middle" class="label-text">Invited to PhD @ PDMI RAS</text>
-
-  <rect x="470" y="175" rx="12" ry="12" width="360" height="38" class="label-pill"/>
-  <a href="#" target="_blank" rel="noreferrer">
-    <text x="650" y="200" text-anchor="middle" class="label-text">Hopf-type theorems for f-neighbors</text>
-  </a>
-
-  <rect x="700" y="38" rx="12" ry="12" width="360" height="38" class="label-pill"/>
-  <a href="#" target="_blank" rel="noreferrer">
-    <text x="880" y="63" text-anchor="middle" class="label-text">Hopf fibration → neurogeometry</text>
-  </a>
-
-  <rect x="930" y="175" rx="12" ry="12" width="420" height="38" class="label-pill"/>
-  <a href="#" target="_blank" rel="noreferrer">
-    <text x="1140" y="200" text-anchor="middle" class="label-text">Hopf-type theorems for convex surfaces</text>
-  </a>
-
-  <rect x="1240" y="38" rx="14" ry="14" width="330" height="62" class="final-pill"/>
-  <text x="1405" y="67" text-anchor="middle" class="final-text">Triangulable manifolds</text>
-  <text x="1405" y="88" text-anchor="middle" class="final-sub">(no Riemannian metric needed!)</text>
-</svg>
-
-
-    <section id="experience" class="section" data-accent="cyan">
-      <h2>Experience</h2>
-
+    <section id="experience" class="section">
+      <h2>Experience & Trajectory</h2>
+      <p class="lead" style="margin-bottom: 40px; color: var(--muted);">
+        My path intertwining Mathematics, Software Engineering, and AI Research.
+      </p>
+    
+      <div class="braid-container">
+        <!-- SVG Фон с косами -->
+        <svg class="braid-svg" preserveAspectRatio="none" viewBox="0 0 100 400">
+          <defs>
+            <!-- Градиенты для нитей -->
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent); stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:var(--accent); stop-opacity:0.1" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent2); stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:var(--accent2); stop-opacity:0.1" />
+            </linearGradient>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#34d399; stop-opacity:0.6" /> <!-- Green for Dev -->
+              <stop offset="100%" style="stop-color:#34d399; stop-opacity:0.1" />
+            </linearGradient>
+          </defs>
+    
+          <!-- 
+             Сами нити (Bezier curves). 
+             Координаты подобраны так, чтобы они переплетались вертикально.
+          -->
+          <!-- Math Track (Cyan) -->
+          <path class="strand strand-math" d="M30,0 C80,50 20,100 50,150 C80,200 20,250 50,300 C80,350 30,400 30,400" />
+          
+          <!-- AI Research Track (Violet) -->
+          <path class="strand strand-ai" d="M50,0 C20,50 80,100 50,150 C20,200 80,250 50,300 C20,350 50,400 50,400" />
+          
+          <!-- Engineering Track (Green) -->
+          <path class="strand strand-dev" d="M70,0 C20,50 80,100 50,150 C20,200 80,250 50,300 C20,350 70,400 70,400" />
+        </svg>
+    
+        <!-- Карточки опыта -->
+        <!-- Position: проценты сверху (top) должны примерно совпадать с узлами на SVG -->
+        
+        <div class="exp-card left" style="top: 10%;">
+          <div class="card" data-track="math">
+            <div class="meta">2018 — 2022</div>
+            <h3>PhD in Mathematics</h3>
+            <p class="role">Geometry & Topology</p>
+            <p class="desc">Focus on spectral geometry. Proved theorems on isospectral manifolds.</p>
+            <span class="pill-sm cyan">Math Track</span>
+          </div>
+        </div>
+    
+        <div class="exp-card right" style="top: 35%;">
+          <div class="card" data-track="dev">
+            <div class="meta">2020 — 2023</div>
+            <h3>Senior Backend Engineer</h3>
+            <p class="role">High-load Systems</p>
+            <p class="desc">Designed distributed systems processing 10k RPS. Optimized geometric algorithms.</p>
+            <span class="pill-sm green">Engineering Track</span>
+          </div>
+        </div>
+    
+        <div class="exp-card left" style="top: 60%;">
+          <div class="card" data-track="ai">
+            <div class="meta">2023 — Present</div>
+            <h3>Senior AI Researcher</h3>
+            <p class="role">Mechanistic Interpretability</p>
+            <p class="desc">Investigating induction heads and superposition in LLMs using singular learning theory.</p>
+            <span class="pill-sm violet">AI Research Track</span>
+          </div>
+        </div>
+        
+      </div>
     </section>
 
     <section id="skills" class="section" data-accent="cyan">
