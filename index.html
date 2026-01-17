@@ -69,13 +69,14 @@
     <section id="experience" class="section">
       <h2>Experience & Trajectory</h2>
       <p class="lead" style="margin-bottom: 60px; color: var(--muted);">
-        A journey through Topology, Distributed Systems, and AI Alignment.
+        From abstract Topology to Engineering, culminating in AI Safety Research.
       </p>
     
       <div class="braid-container">
         
-        <!-- SVG: 3 ЧЕСТНЫЕ НИТИ (Triple Braid) -->
-        <svg class="braid-svg" viewBox="0 0 100 1400" preserveAspectRatio="none">
+        <!-- SVG: 3 Нити (Triple Braid) -->
+        <!-- Высота увеличена до 1650px для плотного контента -->
+        <svg class="braid-svg" viewBox="0 0 100 1650" preserveAspectRatio="none">
           <defs>
             <linearGradient id="grad-cyan" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="rgba(125,211,252,0.1)"/></linearGradient>
             <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="rgba(52,211,153,0.1)"/></linearGradient>
@@ -83,131 +84,181 @@
           </defs>
     
           <!-- 
-             ГЕОМЕТРИЯ:
-             Нити стартуют с 30, 50, 70.
-             Каждая нить делает полное колебание (влево-вправо).
-             Координаты подобраны так, чтобы они визуально пересекались.
+             Геометрия нитей.
+             Violet (AI) и Green (Dev) доминируют сверху.
+             Cyan (Math) доминирует снизу.
           -->
           
-          <!-- MATH (Cyan) - Starts Left (30) -->
+          <!-- Math (Cyan) - Starts Left -->
           <path class="strand strand-math" 
-                d="M30,0 C30,100 70,200 50,300 C30,400 30,500 50,600 C70,700 70,800 50,900 C30,1000 30,1100 50,1200 C70,1300 30,1400 30,1400" 
+                d="M30,0 C30,200 70,400 50,600 C30,800 30,1000 50,1200 C70,1400 30,1650 30,1650" 
                 stroke="url(#grad-cyan)" />
           
-          <!-- AI (Violet) - Starts Center (50) -->
+          <!-- AI (Violet) - Starts Center -->
           <path class="strand strand-ai" 
-                d="M50,0 C70,100 70,200 50,300 C30,400 30,500 50,600 C70,700 70,800 50,900 C30,1000 30,1100 50,1200 C30,1300 50,1400 50,1400" 
+                d="M50,0 C70,200 70,400 50,600 C30,800 30,1000 50,1200 C30,1400 50,1650 50,1650" 
                 stroke="url(#grad-violet)" />
     
-          <!-- DEV (Green) - Starts Right (70) -->
+          <!-- DEV (Green) - Starts Right -->
           <path class="strand strand-dev" 
-                d="M70,0 C70,100 30,200 50,300 C70,400 70,500 50,600 C30,700 30,800 50,900 C70,1000 70,1100 50,1200 C30,1300 70,1400 70,1400" 
+                d="M70,0 C70,200 30,400 50,600 C70,800 70,1000 50,1200 C30,1400 70,1650 70,1650" 
                 stroke="url(#grad-green)" />
         </svg>
     
     
-        <!-- === MATH TRACK (Left Side) === -->
+        <!-- === PRESENT & RECENT (TOP) === -->
     
-        <!-- 1. REU -->
-        <div class="exp-mini left" style="top: 2%;">
-          <div class="card-mini math">
-            <div class="mini-year">2018 · Research Summer</div>
-            <div class="mini-title">MIPT REU</div>
-            <div class="mini-desc">
-              Mentored by Prof. A.V. Malyutin.<br>
-              Solved an open problem in knot theory.
-            </div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-        <!-- 2. PhD Start -->
-        <div class="exp-mini left" style="top: 15%;">
-          <div class="card-mini math">
-            <div class="mini-year">2019 · PhD Candidate</div>
-            <div class="mini-title">Geometry & Topology</div>
-            <div class="mini-desc">Starting research on spectral geometry.</div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-        <!-- 3. Hopf-type k-neighbors -->
-        <div class="exp-mini left" style="top: 28%;">
-          <div class="card-mini math">
-            <div class="mini-year">Publication</div>
-            <div class="mini-title">
-              <a href="#" target="_blank">Hopf-type theorems for <span style="font-style:italic">k</span>-neighbours</a>
-            </div>
-            <div class="mini-desc">Topological constraints on mappings.</div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-        <!-- 4. Neurogeometry -->
-        <div class="exp-mini left" style="top: 42%;">
-          <div class="card-mini math">
-            <div class="mini-year">Interdisciplinary</div>
-            <div class="mini-title">
-              <a href="#" target="_blank">Neurogeometry & Eye Control</a>
-            </div>
-            <div class="mini-desc">Applied Hopf fibration to model oculomotor control systems.</div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-        <!-- 5. Convex Surfaces -->
-        <div class="exp-mini left" style="top: 55%;">
-          <div class="card-mini math">
-            <div class="mini-year">Publication</div>
-            <div class="mini-title">
-              <a href="#" target="_blank">Hopf-type theorems for convex surfaces</a>
-            </div>
-            <div class="mini-desc">Extending results to convex geometry.</div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-        <!-- 6. Mountain Climbing -->
-        <div class="exp-mini left" style="top: 70%;">
-          <div class="card-mini math">
-            <div class="mini-year">Theorem</div>
-            <div class="mini-title">Mountain Climbing Problem</div>
-            <div class="mini-desc">Borsuk-Ulam type theorems and topological extensions.</div>
-          </div>
-          <div class="connector-arrow" style="background: var(--accent);"></div>
-        </div>
-    
-    
-        <!-- === DEV & AI TRACKS (Right Side placeholders) === -->
-        
-        <!-- Dev Start -->
-        <div class="exp-mini right" style="top: 20%;">
-          <div class="connector-arrow" style="background: #34d399;"></div>
-          <div class="card-mini dev">
-            <div class="mini-year">2019-2020</div>
-            <div class="mini-title">Backend Intern</div>
-            <div class="mini-desc">Yandex (C++)</div>
-          </div>
-        </div>
-    
-        <!-- Dev Senior -->
-        <div class="exp-mini right" style="top: 45%;">
-          <div class="connector-arrow" style="background: #34d399;"></div>
-          <div class="card-mini dev">
-            <div class="mini-year">2020-2023</div>
-            <div class="mini-title">Senior Engineer</div>
-            <div class="mini-desc">High-load Architecture (Go/Kafka)</div>
-          </div>
-        </div>
-    
-        <!-- Current AI -->
-        <div class="exp-mini right" style="top: 85%;">
+        <!-- 1. Current Status (AI) -->
+        <div class="exp-mini right" style="top: 0%;">
           <div class="connector-arrow" style="background: var(--accent2);"></div>
           <div class="card-mini ai-main">
             <div class="mini-year">Present</div>
-            <div class="mini-title">Senior AI Researcher</div>
-            <div class="mini-desc">Mechanistic Interpretability & SLT</div>
+            <div class="mini-title">Looking for Opportunities</div>
+            <div class="mini-desc">Open to roles in AI Safety & Interpretability.</div>
           </div>
+        </div>
+    
+        <!-- 2. Kaspi (Eng) -->
+        <div class="exp-mini right" style="top: 8%;">
+          <div class="connector-arrow" style="background: #34d399;"></div>
+          <div class="card-mini dev">
+            <div class="mini-year">2024 — 2025</div>
+            <div class="mini-title">Senior LLM Engineer</div>
+            <div class="mini-desc">Kaspi. Lab.</div>
+          </div>
+        </div>
+    
+        <!-- 3. ARENA (AI) -->
+        <div class="exp-mini right" style="top: 16%;">
+          <div class="connector-arrow" style="background: var(--accent2);"></div>
+          <div class="card-mini ai">
+            <div class="mini-year">2024</div>
+            <div class="mini-title">ARENA Programme</div>
+            <div class="mini-desc">AI Safety & Alignment training.</div>
+          </div>
+        </div>
+    
+        <!-- 4. Spar Project (AI) -->
+        <div class="exp-mini right" style="top: 24%;">
+          <div class="connector-arrow" style="background: var(--accent2);"></div>
+          <div class="card-mini ai">
+            <div class="mini-year">Research Collaboration</div>
+            <div class="mini-title">Spar Project (DeepMind)</div>
+            <div class="mini-desc">
+              w/ Noah Siegel. Information flow methods via SAE features.
+            </div>
+          </div>
+        </div>
+    
+        <!-- 5. Anix (Eng) -->
+        <div class="exp-mini right" style="top: 32%;">
+          <div class="connector-arrow" style="background: #34d399;"></div>
+          <div class="card-mini dev">
+            <div class="mini-year">2023 — 2024</div>
+            <div class="mini-title">Senior CV Researcher</div>
+            <div class="mini-desc">Anix. Multimodal models & Computer Vision.</div>
+          </div>
+        </div>
+    
+        <!-- 6. Steganography (AI) -->
+        <div class="exp-mini right" style="top: 40%;">
+          <div class="connector-arrow" style="background: var(--accent2);"></div>
+          <div class="card-mini ai">
+            <div class="mini-year">LessWrong Post</div>
+            <div class="mini-title">
+                <a href="#">Steganography & Hidden Reasoning</a>
+            </div>
+            <div class="mini-desc">Investigation of model outputs.</div>
+          </div>
+        </div>
+    
+        <!-- 7. Internal Reasoning (AI) -->
+        <div class="exp-mini right" style="top: 48%;">
+          <div class="connector-arrow" style="background: var(--accent2);"></div>
+          <div class="card-mini ai">
+            <div class="mini-year">LessWrong Post</div>
+            <div class="mini-title">
+                <a href="#">Investigation of Internal Reasoning</a>
+            </div>
+            <div class="mini-desc">Analyzing chain-of-thought processes.</div>
+          </div>
+        </div>
+    
+        <!-- 8. SAW (AI) -->
+        <div class="exp-mini right" style="top: 56%;">
+          <div class="connector-arrow" style="background: var(--accent2);"></div>
+          <div class="card-mini ai">
+            <div class="mini-year">Exploratory Research</div>
+            <div class="mini-title">Small Transformers & SAW</div>
+            <div class="mini-desc">Predicting next moves of self-avoiding walks.</div>
+          </div>
+        </div>
+    
+    
+        <!-- === PAST / FOUNDATION (BOTTOM) === -->
+    
+        <!-- 9. Mountain Climbing (Math) -->
+        <div class="exp-mini left" style="top: 62%;">
+          <div class="card-mini math">
+            <div class="mini-year">Theorem</div>
+            <div class="mini-title">Mountain Climbing Problem</div>
+            <div class="mini-desc">Borsuk-Ulam type theorems extensions.</div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
+        </div>
+    
+        <!-- 10. Convex Surfaces (Math) -->
+        <div class="exp-mini left" style="top: 70%;">
+          <div class="card-mini math">
+            <div class="mini-year">Publication</div>
+            <div class="mini-title">
+                <a href="#">Hopf-type theorems for convex surfaces</a>
+            </div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
+        </div>
+    
+        <!-- 11. Neurogeometry (Math) -->
+        <div class="exp-mini left" style="top: 78%;">
+          <div class="card-mini math">
+            <div class="mini-year">Interdisciplinary</div>
+            <div class="mini-title">
+                <a href="#">Neurogeometry & Eye Control</a>
+            </div>
+            <div class="mini-desc">Applied Hopf fibration to oculomotor systems.</div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
+        </div>
+    
+        <!-- 12. k-neighbors (Math) -->
+        <div class="exp-mini left" style="top: 86%;">
+          <div class="card-mini math">
+            <div class="mini-year">Publication</div>
+            <div class="mini-title">
+                <a href="#">Hopf-type theorems for <i>k</i>-neighbours</a>
+            </div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
+        </div>
+    
+        <!-- 13. PhD Start (Math) -->
+        <div class="exp-mini left" style="top: 93%;">
+          <div class="card-mini math">
+            <div class="mini-year">2019 — 2022</div>
+            <div class="mini-title">PhD in Mathematics</div>
+            <div class="mini-desc">Geometry & Topology.</div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
+        </div>
+    
+        <!-- 14. REU (Math) -->
+        <div class="exp-mini left" style="top: 99%;">
+          <div class="card-mini math">
+            <div class="mini-year">2018</div>
+            <div class="mini-title">MIPT REU</div>
+            <div class="mini-desc">Solved knot theory problem (w/ A.V. Malyutin).</div>
+          </div>
+          <div class="connector-arrow" style="background: var(--accent);"></div>
         </div>
     
       </div>
