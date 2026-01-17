@@ -233,7 +233,7 @@
   border-color: color-mix(in srgb, var(--accentA, rgba(255,255,255,.18)) 55%, rgba(255,255,255,.10));
 }
 
-/* ===== Tracks (override) ===== */
+/* ===== Tracks v2 (thin lines, different arrowheads, dot nodes) ===== */
 
 .tracks-grid{
   grid-template-columns: 1fr;
@@ -248,48 +248,45 @@
   margin-bottom: 10px;
 }
 
-/* canvas area for each track */
 .track-svg{
   width: 100%;
   height: auto;
   display:block;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: rgba(0,0,0,.18);
+  background: rgba(0,0,0,.16);
 }
 
-/* colors per track */
-.track[data-accent="cyan"]  { --trk: #7dd3fc; --trkGlow: rgba(125,211,252,.35); }
-.track[data-accent="violet"]{ --trk: #a78bfa; --trkGlow: rgba(167,139,250,.35); }
-.track[data-accent="green"] { --trk: #6ee7b7; --trkGlow: rgba(110,231,183,.35); }
+/* per-track colors (distinct) */
+.track[data-accent="topo"]   { --trk: #a78bfa; --trkGlow: rgba(167,139,250,.28); }
+.track[data-accent="safety"] { --trk: #7dd3fc; --trkGlow: rgba(125,211,252,.28); }
+.track[data-accent="pro"]    { --trk: #34d399; --trkGlow: rgba(52,211,153,.25); }
 
-/* main path */
+/* main path: thinner */
 .track .track-path{
   fill: none;
   stroke: var(--trk);
-  stroke-width: 7;
+  stroke-width: 4.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))
-          drop-shadow(0 0 16px var(--trkGlow));
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.45))
+          drop-shadow(0 0 12px var(--trkGlow));
 }
 
-/* marker arrowhead */
-.track .arrow-fill{
-  fill: var(--trk);
-}
+/* arrowheads */
+.track .arrow-fill{ fill: var(--trk); }
+.track .arrow-stroke{ stroke: var(--trk); stroke-width: 1.8; fill: none; }
 
-/* node dots */
+/* node dots: small points */
 .track .node-dot{
-  fill: rgba(0,0,0,.40);
-  stroke: var(--trk);
-  stroke-width: 3.5;
+  fill: var(--trk);
+  opacity: .95;
 }
 
 /* label pills */
 .track .label-pill{
   fill: rgba(0,0,0,.62);
-  stroke: rgba(255,255,255,.14);
+  stroke: rgba(255,255,255,.12);
   stroke-width: 1;
 }
 
@@ -301,11 +298,15 @@
 /* final pill */
 .track .final-pill{
   fill: rgba(0,0,0,.78);
-  stroke: var(--trk);
-  stroke-width: 2;
+  stroke: rgba(255,255,255,.16);
+  stroke-width: 1;
 }
-
 .track .final-text{
   font: 13px var(--mono);
   fill: rgba(255,255,255,.95);
+}
+
+/* optional: slightly reduce label size on small screens */
+@media (max-width: 520px){
+  .track .label-text, .track .final-text{ font-size: 12px; }
 }

@@ -70,7 +70,7 @@
       <div class="grid tracks-grid">
     
         <!-- ========== Topology ========== -->
-        <div class="card track" data-accent="violet">
+        <div class="card track" data-accent="topo">
           <div class="track-head">
             <h3>Topology</h3>
             <span class="meta">research trajectory</span>
@@ -78,24 +78,28 @@
     
           <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Topology track">
             <defs>
-              <marker id="arrow-topology" viewBox="0 0 10 10" refX="9.4" refY="5"
-                      markerWidth="10" markerHeight="10" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+              <!-- Arrowhead A: filled triangle (slim) -->
+              <marker id="arrow-topo" viewBox="0 0 12 12" refX="11" refY="6"
+                      markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M 0 1 L 12 6 L 0 11 z" class="arrow-fill"/>
               </marker>
             </defs>
     
-            <path class="track-path" marker-end="url(#arrow-topology)"
+            <path class="track-path" marker-end="url(#arrow-topo)"
                   d="M 90 120 C 240 40, 360 200, 510 120 S 720 40, 890 120" />
     
-            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <!-- dots -->
+            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="360" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="620" cy="120" r="4.2" class="node-dot"/>
+    
+            <!-- labels -->
             <rect x="62" y="150" rx="12" ry="12" width="116" height="32" class="label-pill"/>
             <text x="120" y="171" text-anchor="middle" class="label-text">Start</text>
     
-            <circle cx="360" cy="120" r="14" class="node-dot"/>
             <rect x="265" y="30" rx="12" ry="12" width="190" height="32" class="label-pill"/>
             <text x="360" y="51" text-anchor="middle" class="label-text">Hopf / Borsuk–Ulam</text>
     
-            <circle cx="620" cy="120" r="14" class="node-dot"/>
             <rect x="530" y="155" rx="12" ry="12" width="180" height="32" class="label-pill"/>
             <text x="620" y="176" text-anchor="middle" class="label-text">LS / Tucker</text>
     
@@ -105,7 +109,7 @@
         </div>
     
         <!-- ========== AI Safety ========== -->
-        <div class="card track" data-accent="cyan">
+        <div class="card track" data-accent="safety">
           <div class="track-head">
             <h3>AI Safety</h3>
             <span class="meta">alignment trajectory</span>
@@ -113,24 +117,26 @@
     
           <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="AI Safety track">
             <defs>
-              <marker id="arrow-aisafety" viewBox="0 0 10 10" refX="9.4" refY="5"
+              <!-- Arrowhead B: open chevron (different shape) -->
+              <marker id="arrow-safety" viewBox="0 0 14 14" refX="13" refY="7"
                       markerWidth="10" markerHeight="10" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+                <path d="M 1 2 L 13 7 L 1 12" class="arrow-stroke" />
               </marker>
             </defs>
     
-            <path class="track-path" marker-end="url(#arrow-aisafety)"
+            <path class="track-path" marker-end="url(#arrow-safety)"
                   d="M 90 120 C 230 55, 360 55, 470 120 S 700 200, 890 120" />
     
-            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="470" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="700" cy="150" r="4.2" class="node-dot"/>
+    
             <rect x="30" y="150" rx="12" ry="12" width="180" height="32" class="label-pill"/>
             <text x="120" y="171" text-anchor="middle" class="label-text">SAW toy models</text>
     
-            <circle cx="470" cy="120" r="14" class="node-dot"/>
             <rect x="350" y="30" rx="12" ry="12" width="240" height="32" class="label-pill"/>
             <text x="470" y="51" text-anchor="middle" class="label-text">Hidden reasoning / probing</text>
     
-            <circle cx="700" cy="150" r="14" class="node-dot"/>
             <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
             <text x="700" y="196" text-anchor="middle" class="label-text">Info flow + attention</text>
     
@@ -140,7 +146,7 @@
         </div>
     
         <!-- ========== Professional ========== -->
-        <div class="card track" data-accent="green">
+        <div class="card track" data-accent="pro">
           <div class="track-head">
             <h3>Professional</h3>
             <span class="meta">industry trajectory</span>
@@ -148,24 +154,26 @@
     
           <svg class="track-svg" viewBox="0 0 980 220" role="img" aria-label="Professional track">
             <defs>
-              <marker id="arrow-pro" viewBox="0 0 10 10" refX="9.4" refY="5"
-                      markerWidth="10" markerHeight="10" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+              <!-- Arrowhead C: diamond (filled) -->
+              <marker id="arrow-pro" viewBox="0 0 14 14" refX="13" refY="7"
+                      markerWidth="9" markerHeight="9" orient="auto">
+                <path d="M 7 1 L 13 7 L 7 13 L 1 7 z" class="arrow-fill"/>
               </marker>
             </defs>
     
             <path class="track-path" marker-end="url(#arrow-pro)"
                   d="M 90 120 C 250 200, 360 40, 520 120 S 700 200, 890 120" />
     
-            <circle cx="120" cy="120" r="14" class="node-dot"/>
+            <circle cx="120" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="520" cy="120" r="4.2" class="node-dot"/>
+            <circle cx="700" cy="150" r="4.2" class="node-dot"/>
+    
             <rect x="40" y="150" rx="12" ry="12" width="160" height="32" class="label-pill"/>
             <text x="120" y="171" text-anchor="middle" class="label-text">CV / graphics</text>
     
-            <circle cx="520" cy="120" r="14" class="node-dot"/>
             <rect x="395" y="30" rx="12" ry="12" width="250" height="32" class="label-pill"/>
             <text x="520" y="51" text-anchor="middle" class="label-text">Vectorization / geometry</text>
     
-            <circle cx="700" cy="150" r="14" class="node-dot"/>
             <rect x="600" y="175" rx="12" ry="12" width="200" height="32" class="label-pill"/>
             <text x="700" y="196" text-anchor="middle" class="label-text">LLMs for matching</text>
     
