@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ilya Shirokov — AI Researcher & Mathematician</title>
+  <meta name="description" content="Ilya Shirokov — Senior AI Researcher, PhD in Mathematics. Mechanistic interpretability, information flow, transformer internals, singular learning theory." />
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Optional: nice link previews -->
+  <meta property="og:title" content="Ilya Shirokov — AI Researcher & Mathematician" />
+  <meta property="og:description" content="Mechanistic interpretability, information flow in transformers, geometric structures in activations, SLT." />
+  <meta property="og:type" content="website" />
+</head>
+
+<body>
+  <header class="container">
+    <div class="top">
+      <div>
+        <h1>Ilya Shirokov</h1>
+        <p class="subtitle">Senior AI Researcher · PhD in Mathematics</p>
+      </div>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="card hero">
+      <p class="lead">
+        AI Researcher & Mathematician. I work on mechanistic interpretability and internal information flow in transformer models,
+        with a focus on geometric structure in activations and links to Singular Learning Theory.
+      </p>
+
+      <div class="links">
+        <!-- Replace with your actual links if needed -->
+        <a class="pill" href="mailto:shirokov.im@phystech.edu">shirokov.im@phystech.edu</a>
+        <a class="pill" href="https://linkedin.com/in/ilya-shirokov/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="pill" href="#" onclick="alert('Add your GitHub link here'); return false;">GitHub</a>
+        <a class="pill" href="#" onclick="alert('Add your LessWrong profile link here'); return false;">LessWrong</a>
+      </div>
+
+      <p class="note">
+        Tip: I’d recommend NOT publishing your phone number on a public page. If you want it, we can obfuscate it (e.g., “+7 …” as an image).
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="card">
+        <p>
+          Published papers in Topology and Neurogeometry and authored LessWrong posts on AI Safety and Chain-of-Thought Alignment.
+          Recently, I developed and tested methods for tracing information flow inside transformer attention layers and studied limitations
+          of SAE-based reconstruction for capturing attention transformations.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+
+      <div class="card">
+        <div class="row">
+          <h3>Senior LLM Engineer — Kaspi (Remote)</h3>
+          <span class="meta">Nov 2025 – now</span>
+        </div>
+        <ul>
+          <li>Used TunedLens to identify layer 19/36 as an early-exit point in Qwen3-8B for marketplace product matching.</li>
+          <li>Built a distillation pipeline from depth-pruned teacher to Qwen2.5-1.5B student; quantization-enabled deployment.</li>
+          <li>Replaced a BERT baseline, improving recall by ~10% without sacrificing accuracy or inference speed.</li>
+        </ul>
+        <p class="stack"><span>Stack:</span> TunedLens, PyTorch, AWQ, Transformers, Accelerate, ClearML.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>ARENA Alumni — Alignment Research Engineer Accelerator (London, UK)</h3>
+          <span class="meta">Jan 2026 – Feb 2026</span>
+        </div>
+        <p class="muted">Program participation (alignment engineering / research accelerator).</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Research Fellow — SPAR (AI Safety Research Program)</h3>
+          <span class="meta">Sep 2025 – Dec 2025</span>
+        </div>
+        <ul>
+          <li>Collaborated with Noah Siegel (Google DeepMind) on a faithfulness project; traced information flow in attention layers.</li>
+          <li>Method 1 identified salient tokens in tasks with clear relevance structure, but did not explain transformations.</li>
+          <li>Method 2 traced pre-attention → post-attention features via repeated SAE application; showed SAE reconstruction insufficiency.</li>
+        </ul>
+        <p class="stack"><span>Stack:</span> SAELens, TransformerLens, Neuronpedia; Infrastructure: 8×H100 cluster.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>AI Researcher — Independent</h3>
+          <span class="meta">Mar 2025 – Sep 2025</span>
+        </div>
+        <ul>
+          <li>Studied “secret circuits” / hidden reasoning: fine-tuned Llama-3.2-3B-Instruct with probing adapters; activation patching analysis.</li>
+          <li>Built training pipelines (SFT, DPO, GRPO, iterative bootstrapped fine-tuning) to test hidden latent reasoning emergence.</li>
+          <li>Applied SAE-Evolution to compare information flow in base vs fine-tuned models.</li>
+        </ul>
+        <p class="stack"><span>Stack:</span> Transformers, Unsloth, vLLM, ClearML, Docker, Verifiers.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Middle AI Researcher — IITP (Moscow, Russia)</h3>
+          <span class="meta">May 2024 – Sep 2024</span>
+        </div>
+        <ul>
+          <li>Trained toy transformers for next-step prediction of self-avoiding walks on Z²; analyzed heads enforcing non-local constraints.</li>
+          <li>Achieved 93% accuracy when continuation is uniquely valid (exploratory research).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Senior / Middle Computer Vision Research Engineer — Anix (Moscow, Russia)</h3>
+          <span class="meta">Jun 2023 – Oct 2024</span>
+        </div>
+        <ul>
+          <li>Vectorization of line drawings to planar graphs; matching drawings via ViTs, registration, TPS, GNNs, subgraph isomorphism.</li>
+          <li>Homotopy-based animation/interpolation with ResNet LDDMM; built human-in-the-loop UI tooling.</li>
+          <li>Diffusion: LoRA fine-tuning workflow for Flux1-Dev with dataset generation/validation; VLM training & quantization on clusters.</li>
+          <li>Led a team building an agentic system for automatic cartoon creation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Technical skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Core</h3>
+          <p>Python, C++</p>
+        </div>
+        <div class="card">
+          <h3>Deep Learning</h3>
+          <p>PyTorch, Transformers (HF), JAX, Diffusers, Einops, Accelerate, Unsloth, vLLM</p>
+        </div>
+        <div class="card">
+          <h3>Engineering</h3>
+          <p>Docker, Git, Ansible, FastAPI, Celery, S3</p>
+        </div>
+        <div class="card">
+          <h3>Geometric analysis</h3>
+          <p>TDA (Ripser), Laplacian Eigenmaps, SciPy, NetworkX, PyTorch Geometric</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <h2>Publications</h2>
+      <div class="card">
+        <ul>
+          <li><b>I.M. Shirokov, A.V. Malyutin, A. Volkova</b> — Borsuk-Ulam type theorems and mountain climbing problem (submitted, 2025).</li>
+          <li><b>I.M. Shirokov</b> — Hopf type theorems for convex surfaces (arXiv preprint, 2025).</li>
+          <li><b>I.M. Shirokov, D.V. Alekseevsky</b> — Geometry of saccades and saccadic cycles (LNCS 14072, 2023).</li>
+          <li><b>A.V. Malyutin, I.M. Shirokov</b> — Hopf-type theorems for f-neighbors (Siberian Electronic Mathematical Reports, 2022).</li>
+        </ul>
+        <p class="muted">If you want, we can add direct links (arXiv / journal pages) once you paste them.</p>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <h2>Education</h2>
+
+      <div class="card">
+        <div class="row">
+          <h3>Steklov Mathematical Institute (PDMI RAS) — PhD in Mathematics</h3>
+          <span class="meta">2021 – 2025</span>
+        </div>
+        <p class="muted">
+          Geometry & Topology (Hopf/Borsuk–Ulam type theorems; LS and Tucker-type consequences), plus Neurogeometry (Hopf fibration models of eye movements).
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Moscow Institute of Physics and Technology — M.Sc. Computational Physics</h3>
+          <span class="meta">2019 – 2021</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Moscow Institute of Physics and Technology — B.Sc. Computational Physics</h3>
+          <span class="meta">2015 – 2019</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>
+          Best way: <a href="mailto:shirokov.im@phystech.edu">shirokov.im@phystech.edu</a>.
+          You can also reach me via <a href="https://linkedin.com/in/ilya-shirokov/" target="_blank" rel="noreferrer">LinkedIn</a>.
+        </p>
+        <p class="muted">
+          (Optional) Add: GitHub, Google Scholar, LessWrong, and project links.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Ilya Shirokov · Built for GitHub Pages</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
